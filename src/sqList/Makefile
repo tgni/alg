@@ -1,2 +1,3 @@
 all:
-	gcc find_median.c -o test
+	#gcc sqList.c -o test
+	gcc LinkList.c -o test

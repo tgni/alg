@@ -112,6 +112,32 @@ LinkList Reverse(LinkList *L)
 	return *L;
 }
 
+void Sort(LinkList *L)
+{
+	LNode *p, *r, *pre;
+
+	p = (*L)->next;
+	r = p->next;
+	p->next = NULL;
+	p = r;
+
+	while (p) {
+		r = p->next;
+		//pre points to result L
+		pre = *L;
+		//find position to insert p
+		while (pre->next && pre->next->data < p->data)
+			pre = pre->next;
+		//insert p
+		p->next = pre->next;
+		pre->next = p;
+		//p = p->next
+		p = r;
+	}
+
+	return;
+}
+
 LinkList create2(int nr)
 {
 	int i;
@@ -140,6 +166,8 @@ void printReverse(LinkList L)
 	printf("%d ", L->data);
 }
 
+
+
 void printList(LinkList L)
 {
 	while (L) {
@@ -157,9 +185,11 @@ int main(void)
 	srand(time(NULL));
 	L = create2(10);
 	printList(L);
-	//printReverse(L);
-	Reverse(&L);
+	Sort(&L);
 	printList(L);
+	//printList(L);
+	//printReverse(L);
+	//Reverse(&L);
 	/*
 	delete2(&L, 0);
 	delete2(&L, 1);

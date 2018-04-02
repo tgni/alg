@@ -192,6 +192,7 @@ void PrintSqList(SqList *sq)
 	printf("\n");
 }
 
+/*
 int main(void)
 {
 	SqList L;
@@ -235,3 +236,73 @@ int main(void)
 
 	return 0;
 }
+*/
+
+int find_main_elem(int A[], int n)
+{
+	int i, j;
+	int count;
+	int e;
+	
+	for (i = 0; i < n/2+1; ++i) {
+		e = A[i];
+		count = 1;
+		for (j = i+1; j < n; ++j) {
+			if (e == A[j])
+				++count;
+		}
+		if (count > n/2)
+			return e;
+	}
+
+	return -1;
+}
+
+int find_main_elem_dynamic(int A[], int n)
+{
+	int i, count, e;
+	
+	e = A[0];
+	count = 1;
+	printf("e: %d, count: %d\n", e, count);
+
+	//find element which number is max.
+	for (i = 1; i < n; ++i) {
+		if (e == A[i]) {
+			++count;
+		} else if (--count == 0) {
+			e = A[i];
+			++count;
+		}
+		printf("e: %d, count: %d\n", e, count);
+	}
+	
+	//calculate its number to judge if it is main
+	if (count > 0) {
+		for (i = count = 0; i < n; ++i) {
+			if (e == A[i])
+				++count;
+		}
+		if (count > n/2)
+			return e;
+	}
+
+	return -1;
+}
+
+int main(void)
+{
+	int A[] = {1, 1, 1, 1, 5, 5, 5, 5};
+	int B[] = {0, 5, 5, 3, 5, 1, 5, 7};
+	int C[] = {0, 1, 3, 5, 5, 5, 5, 5};
+
+	printf("A: %d\n", find_main_elem_dynamic(A, 8));
+	printf("B: %d\n", find_main_elem_dynamic(B, 8));
+	printf("C: %d\n", find_main_elem_dynamic(C, 8));
+//	printf("A: %d\n", find_main_elem(A, 8));
+//	printf("B: %d\n", find_main_elem(B, 8));
+//	printf("C: %d\n", find_main_elem(C, 8));
+
+	return 0;
+}
+
