@@ -1,7 +1,6 @@
 #include <stdio.h>
 #include "types.h"
 
-
 int find_median(int A[], int B[], int n)
 {
 	int mid_a, low_a, high_a;
