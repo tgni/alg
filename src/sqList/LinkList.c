@@ -18,7 +18,7 @@ typedef struct LNode {
  *	q = *L;
  *	q = q->next;
  */
-void delete(LinkList *L, ElemType x)
+void Delete(LinkList *L, ElemType x)
 {
 	LinkList p;
 
@@ -29,14 +29,14 @@ void delete(LinkList *L, ElemType x)
 		p = *L;
 		*L = (*L)->next;
 		free(p);
-		delete(L, x);
+		Delete(L, x);
 	} else {
-		delete(&(*L)->next, x);
+		Delete(&(*L)->next, x);
 	}
 }
 
 
-LinkList create(int nr)
+LinkList Create(int nr)
 {
 	int i;
 	LinkList p, L;
@@ -57,12 +57,29 @@ LinkList create(int nr)
 }
 
 /* LinkList with HEADER */
-void delete2(LinkList *L, ElemType x)
+void Delete2(LinkList *L, ElemType x)
 {
 	LNode *p = (*L)->next, *pre = *L, *q;
 
 	while (p) {
 		if (p->data == x) {
+			q = p;
+			p = p->next;
+			pre->next = p;
+			free(q);
+		} else {
+			pre = p;
+			p   = p->next;
+		}
+	}
+}
+
+void Deletexy(LinkList *L, ElemType x, ElemType y)
+{
+	LNode *p = (*L)->next, *pre = *L, *q;
+
+	while (p) {
+		if (p->data > x && p->data < y) {
 			q = p;
 			p = p->next;
 			pre->next = p;
@@ -93,6 +110,29 @@ LinkList DeleteMin(LinkList *L)
 	free(minp);
 
 	return *L;
+}
+
+void DeleteDup(LinkList *L)
+{
+	LNode *pre, *p;
+
+	if (!(pre = (*L)->next))
+		return;
+
+	p = pre->next;
+
+	while (p) {
+		if (pre->data == p->data) {
+			pre->next = p->next;
+			free(p);
+			p = pre->next;
+		} else {
+			pre = p;
+			p = p->next;
+		}
+	}
+
+	return;
 }
 
 LinkList Reverse(LinkList *L)
@@ -138,7 +178,7 @@ void Sort(LinkList *L)
 	return;
 }
 
-LinkList create2(int nr)
+LinkList Create2(int nr)
 {
 	int i;
 	LinkList p, L;
@@ -158,17 +198,17 @@ LinkList create2(int nr)
 	return L;
 }
 
-void printReverse(LinkList L)
+void PrintReverse(LinkList L)
 {
 	if (L->next) {
-		printReverse(L->next);
+		PrintReverse(L->next);
 	}
 	printf("%d ", L->data);
 }
 
 
 
-void printList(LinkList L)
+void PrintList(LinkList L)
 {
 	while (L) {
 		printf("%d ", L->data);
@@ -177,26 +217,70 @@ void printList(LinkList L)
 	printf("\n");
 }
 
+void Split(LinkList L, LinkList *odd, LinkList *even)
+{
+	LNode *p, *r, *r1 = *odd, *r2 = *even;
+
+	p = L->next;
+	r1->next = NULL;	
+	r2->next = NULL;
+
+	while (p) {
+		r = p->next;
+		if (p->data % 2 == 0) {
+			r1->next = p;
+			p->next  = NULL;
+			r1 = r1->next;
+		} else {
+			r2->next = p;
+			p->next  = NULL;
+			r2 = r2->next;
+		}
+		p = r;
+	}
+
+	return;
+}
+
+LinkList Split2(LinkList *A)
+{
+	LinkList B;
+	LNode *p, *r1 = *A, *r2;
+	int i = 0;
+
+	B = (LinkList)malloc(sizeof(LNode));
+	B->data = -1;
+	r2 = B;
+
+	p = (*A)->next;
+	while (p) {
+		if (++i % 2 != 0) {
+			r1->next = p;
+			r1 = r1->next;
+		} else {
+			r2->next = p;
+			r2 = r2->next;
+		}
+		p = p->next;
+	}
+	
+	r1->next = NULL;
+	r2->next = NULL;
+
+	return B;
+}
+
 
 int main(void)
 {
-	LinkList L;
+	LinkList A;
 
 	srand(time(NULL));
-	L = create2(10);
-	printList(L);
-	Sort(&L);
-	printList(L);
-	//printList(L);
-	//printReverse(L);
-	//Reverse(&L);
-	/*
-	delete2(&L, 0);
-	delete2(&L, 1);
-	delete2(&L, 2);
-	delete2(&L, 3);
-	printList(L);
-	*/
+	A = Create2(10);
+	Sort(&A);
+	PrintList(A);
+	DeleteDup(&A);
+	PrintList(A);
 
 	return 0;
 }
