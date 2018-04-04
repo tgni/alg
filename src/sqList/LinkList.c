@@ -412,7 +412,7 @@ int Pattern(LinkList A, LinkList B)
 			p = p->next;
 			q = q->next;
 		} else {
-			pre = pre->next;	
+			pre = pre->next;
 			p = pre;
 			q = B->next;
 		}
@@ -421,22 +421,99 @@ int Pattern(LinkList A, LinkList B)
 	return q ? FALSE : TRUE;
 }
 
-DLinkList *CreateDLinkList(ElemType A[], int nr)
+void DListAdd(DLinkList L, DNode *new)
 {
+	new->next = L->next;
+	L->next->prior = new;
+	new->prior = L;
+	L->next = new;
+}
 
+void DListAddTail(DLinkList L, DNode *new)
+{
+	new->next = L;
+	L->prior->next = new;
+	new->prior = L->prior;
+	L->prior = new;
+}
+
+void DListDel(DNode *n)
+{
+	n->prior = n->next;
+	n->next->prior = n->prior;
+	free(n);
+}
+
+DLinkList DListCreate(ElemType A[], int nr)
+{
+	int i;
+	DNode *p;
+	DLinkList L;
+
+	L = (DLinkList)malloc(sizeof(DNode));
+	L->data = -1;
+	L->prior = L->next = L;
+
+	for (i = 0; i < nr; ++i) {
+		p = (DNode *)malloc(sizeof(DNode));
+		p->data = A[i];
+		DListAddTail(L, p);
+	}
+
+	return L;
+}
+
+void DListPrint(DLinkList L)
+{
+	DNode *p = L->next;
+
+	while (p != L) {
+		printf("%d ", p->data);
+		p = p->next;
+	}
+	printf("\n");
+}
+
+void DListDestroy(DLinkList L)
+{
+	DNode *p = L->next, *q;
+
+	while (p != L) {
+		q = p->next;
+		DListDel(p);
+		p = q;
+	}
+	free(L);
+}
+
+int IsSymmetric(DLinkList L)
+{
+	DNode *p, *q;
+
+	p = L->prior;
+	q = L->next;
+
+	while (p != q && p->next != q) {
+		if (p->data == q->data) {
+			p = p->prior;
+			q = q->next;
+		} else {
+			return 0;
+		}
+	}
+
+	return 1;
 }
 
 
 int main(void)
 {
 	//ElemType A[10] = {1, 6, 7, 4, 6, 8, 6, 7, 8, 10};
-	ElemType A[10] = {1, 6, 7, 4, 6, 8, 6, 7, 0, 10};
-	ElemType B[3] = {6, 7, 8};
-	LinkList La, Lb;
+	//ElemType B[3] = {6, 7, 8};
+	//LinkList La, Lb;
 
-	La = Create3(A, 10);
-	Lb = Create3(B, 3);
-
+	//La = Create3(A, 10);
+	//Lb = Create3(B, 3);
 	//L = Create2(10);
 	//PrintList(L);
 	//Delete(L, 0);
@@ -449,12 +526,24 @@ int main(void)
 	//A = Split(L); 
 	//PrintList(L);
 	//PrintList(A);
-	
-	PrintList(La);
-	PrintList(Lb);
-	printf("B is %s sub of A.\n", Pattern(La, Lb) ? "" : "not");
+	//PrintList(La);
+	//PrintList(Lb);
+	//printf("B is %s sub of A.\n", Pattern(La, Lb) ? "" : "not");
 	//Union(A, B);	
 	//PrintList(A);
+	ElemType A[10] = {1, 2, 4, 4, 5, 5, 4, 3, 2, 1};
+	ElemType B[10] = {1, 2, 3, 4, 5, 5, 4, 3, 2, 1};
+	DLinkList L;
+	
+	L = DListCreate(A, 10);
+	DListPrint(L);
+	printf("L is%ssymmetric!\n", IsSymmetric(L) ? " " : " not ");
+	DListDestroy(L);
+
+	L = DListCreate(B, 10);
+	DListPrint(L);
+	printf("L is%ssymmetric!\n", IsSymmetric(L) ? " " : " not ");
+	DListDestroy(L);
 
 	return 0;
 }
