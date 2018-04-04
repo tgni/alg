@@ -3,11 +3,18 @@
 #include <time.h>
 
 #define ElemType int
+#define FALSE  0 
+#define TRUE   1
 
 typedef struct LNode {
 	ElemType data;
 	struct LNode *next;
 } LNode, *LinkList;
+
+typedef struct DNode {
+	ElemType data;
+	struct DNode *prior, *next;
+} DNode, *DLinkList;
 
 /* delete - recursively delete one or more nodes from L with data as x.
  * @L: LinkList without head
@@ -153,6 +160,7 @@ void Reverse(LinkList L)
 	return;
 }
 
+/* Insertion Sort */
 void Sort(LinkList L)
 {
 	LNode *p, *r, *pre;
@@ -197,6 +205,27 @@ LinkList Create2(int nr)
 	p->next = NULL;
 
 	return L;
+}
+
+LinkList Create3(ElemType A[], int nr)
+{
+	int i;
+	LinkList p, L;
+	
+	L = (LinkList)malloc(sizeof(LNode));
+	L->data = -1;
+	p = L;
+
+	for (i = 0; i < nr; ++i) {
+		p->next = (LinkList)malloc(sizeof(LNode));
+		p = p->next;
+		p->data = A[i];
+	}
+
+	p->next = NULL;
+
+	return L;
+
 }
 
 void PrintReverse(LinkList L)
@@ -246,7 +275,153 @@ LinkList Split(LinkList A)
 	return B;
 }
 
-void Merge(LinkList A, LinkList B)
+/* Merge two sorted A & B */
+LinkList Merge(LinkList A, LinkList B)
+{
+	LinkList R;
+	LNode *p, *q, *r;
+
+	R = (LinkList)malloc(sizeof(LNode));
+	R->data = -1;
+	R->next = NULL;
+
+	p = A->next;
+	q = B->next;
+
+	while (p && q) {
+		if (p->data < q->data) {
+			r = p->next;
+			p->next = R->next;
+			R->next = p;
+			p = r;
+		} else {
+			r = q->next;
+			q->next = R->next; 
+			R->next = q;
+			q = r;
+		}
+	}
+
+	p = (q) ? q : p;
+
+	while (p) {
+		r = p->next;
+		p->next = R->next;
+		R->next = p;
+		p = r;
+	}
+
+	free(A);
+	free(B);
+
+	return R;
+}
+
+/* Extract common elements from A and B, which are sorted.  */
+LinkList Comm(LinkList A, LinkList B)
+{
+	LinkList C;
+	LNode *p, *q, *r;
+
+	C = (LinkList)malloc(sizeof(LNode));
+	C->data = -1;
+	C->next = NULL;
+
+	p = A->next;
+	q = B->next;
+
+	while (p && q) {
+		if (p->data == q->data) {
+			r = (LNode *)malloc(sizeof(LNode));
+			r->data = p->data;
+			r->next = C->next;
+			C->next = r;
+			p = p->next;
+			q = q->next;
+		} else if (p->data > q->data) {
+			q = q->next;	
+		} else {
+			p = p->next;
+		}
+	}
+
+	if (!C->next) {
+		free(C);
+		return NULL;
+	}
+
+	//Sort(C);
+	//DeleteDup(C);
+
+	return C;
+}
+
+/* A = A n B, A and B are increasing sorted.  */
+void Union(LinkList A, LinkList B)
+{
+	LNode *p, *q, *r, *t;	
+
+	p = A->next;
+	q = B->next;
+	r = A;
+
+	A->next = NULL;
+	while (p && q) {
+		if (p->data == q->data)	{
+			r->next = p;				
+			r = r->next;
+			p = p->next;
+			t = q;
+			q = q->next;
+		} else if (p->data > q->data) {
+			t = q;
+			q = q->next;
+		} else {
+			t = p;
+			p = p->next;
+		}
+		free(t);
+	}
+	r->next = NULL;
+	DeleteDup(A);
+
+	while (p) {
+		t = p;
+		p = p->next;
+		free(p);
+	}
+	while (q) {
+		t = q;
+		q = q->next;
+		free(q);
+	}
+	free(B);
+
+	return;
+}
+
+int Pattern(LinkList A, LinkList B)
+{
+	LNode *p, *pre, *q;
+
+	pre = p = A->next;
+	q = B->next;
+
+	while (p && q) {
+		if (p->data == q->data) {
+			p = p->next;
+			q = q->next;
+		} else {
+			pre = pre->next;	
+			p = pre;
+			q = B->next;
+		}
+	}
+	
+	return q ? FALSE : TRUE;
+}
+
+DLinkList *CreateDLinkList(ElemType A[], int nr)
 {
 
 }
@@ -254,12 +429,16 @@ void Merge(LinkList A, LinkList B)
 
 int main(void)
 {
-	LinkList L, A;
+	//ElemType A[10] = {1, 6, 7, 4, 6, 8, 6, 7, 8, 10};
+	ElemType A[10] = {1, 6, 7, 4, 6, 8, 6, 7, 0, 10};
+	ElemType B[3] = {6, 7, 8};
+	LinkList La, Lb;
 
-	srand(time(NULL));
+	La = Create3(A, 10);
+	Lb = Create3(B, 3);
 
-	L = Create2(10);
-	PrintList(L);
+	//L = Create2(10);
+	//PrintList(L);
 	//Delete(L, 0);
 	//DeleteXY(L, 0, 5);
 	//DeleteMin(L);
@@ -269,6 +448,12 @@ int main(void)
 	//Reverse(L);	
 	//A = Split(L); 
 	//PrintList(L);
+	//PrintList(A);
+	
+	PrintList(La);
+	PrintList(Lb);
+	printf("B is %s sub of A.\n", Pattern(La, Lb) ? "" : "not");
+	//Union(A, B);	
 	//PrintList(A);
 
 	return 0;
