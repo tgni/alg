@@ -253,6 +253,7 @@ void PrintList(LinkList L)
 	printf("\n");
 }
 
+/* Split A into A & B, while A stores odd position numbers, and B even's. */
 LinkList Split(LinkList A)
 {
 	LinkList B;
@@ -406,6 +407,7 @@ void Union(LinkList A, LinkList B)
 	return;
 }
 
+/* If B is sub link list of A. */
 int Pattern(LinkList A, LinkList B)
 {
 	LNode *p, *pre, *q;
@@ -496,6 +498,7 @@ void DListDestroy(DLinkList L)
 	free(L);
 }
 
+/* Locate x from L, L is Double LinkList without circle.  */
 DNode *Locate(DLinkList L, ElemType x)
 {
 	DNode *p = L->next, *q;
@@ -523,6 +526,7 @@ DNode *Locate(DLinkList L, ElemType x)
 	return p;
 }
 
+/* DLinkList L is symmetric or not */
 int IsSymmetric(DLinkList L)
 {
 	DNode *p, *q;
@@ -620,8 +624,71 @@ void PrintCList(LinkList L)
 	printf("\n");
 }
 
+int SearchLastK(LinkList L, int k)
+{
+	LNode *p, *q;
+	int c = 0;
+
+	p = q = L->next;
+
+	while (p) {
+		if (++c >= k+1)
+			q = q->next;
+		p = p->next;
+	}
+
+	if (c < k)
+		return 0;
+
+	printf("pos: %d, data %d\n", k, q->data);
+	return 1;
+}
+
+int Length(LinkList L)
+{
+	LNode *p = L->next;	
+	int len = 0;
+
+	while (p) {
+		++len;
+		p = p->next;
+	}
+
+	return len;
+}
+
+
+LNode *Search1stComm(LinkList A, LinkList B)
+{
+	int l1 = Length(A), l2 = Length(B), dist;
+	LinkList L, S;
+
+	if (l1 < l2) {
+		dist = l2 - l1;
+		L = B->next;
+		S = A->next;
+	} else {
+		dist = l1 - l2;
+		L = A->next;
+		S = B->next;
+	}
+	while (dist--)
+		L = L->next;	
+	while (L) {
+		if (L == S) {
+			return L;
+		}else {
+			L = L->next;
+			S = S->next;
+		}
+	}
+
+	return NULL;
+}
+
 int main(void)
 {
+	/*
 	DLinkList L;
 	DNode *p;
 	ElemType x, A[] = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
@@ -636,5 +703,12 @@ int main(void)
 			printf("%d: %d(%d)\n", count, p->data, p->freq);
 	}
 	DListPrint(L);
+	*/
+	LinkList L;	
+	L = Create2(10);
+	PrintList(L);
+	if (!SearchLastK(L, 3))
+		printf("Not found pos 3\n");
+
 	return 0;
 }
