@@ -21,5 +21,7 @@ typedef struct stack_s {
 extern void stack_init(stack_t *s, char *name, int32_t offset);
 extern void push(stack_t *s, void *obj);
 extern void * pop(stack_t *s);
+extern int is_empty(stack_t *s);
+extern void * top(stack_t *s);
 
 #endif /* end of __STACK_H__ */

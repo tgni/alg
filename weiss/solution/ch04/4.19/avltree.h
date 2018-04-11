@@ -3,6 +3,8 @@ typedef int ElementType;
 #ifndef _AvlTree_H
 #define _AvlTree_H
 
+#include "types.h"
+
 struct AvlNode;
 typedef struct AvlNode *Position;
 typedef struct AvlNode *AvlTree;
@@ -18,5 +20,8 @@ extern ElementType Retrieve( Position P );
 extern void ComputeDistAndDepth( AvlTree T );
 extern void VPrintAvlTree(AvlTree T);
 extern void HPrintAvlTree(AvlTree T);
+extern void InOrder(AvlTree T);
+extern void PreOrder(AvlTree T);
+extern void PostOrder(AvlTree T);
 
 #endif  /* _AvlTree_H */

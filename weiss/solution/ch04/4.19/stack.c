@@ -41,3 +41,16 @@ void * pop(stack_t *s)
 
 	return obj;
 }
+
+void * top(stack_t *s)
+{
+	if (list_empty(&s->head))
+		return NULL;
+
+	return (void *)((char *)s->head.next - s->offset);
+}
+
+int is_empty(stack_t *s)
+{
+	return list_empty(&s->head);
+}

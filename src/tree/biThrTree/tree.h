@@ -15,8 +15,12 @@ typedef struct BiThrNode {
 	PointerTag LTag, RTag;
 } BiThrNode, * BiThrTree;
 
+typedef struct BiTNode {
+	TElemType data;
+	struct BiTNode *lchild, *rchild;
+	int depth;
+} BiTNode, *BiTree;
 
-typedef int32_t (*VisitFn)(BiThrNode *p);
-
+typedef int32_t (*VisitFn)(void *p);
 
 #endif

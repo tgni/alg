@@ -4,29 +4,7 @@
 #include <stdlib.h>
 #include "avltree.h"
 #include "tool.h"
-#if 0
-int main(int argc, char *argv[])
-{
-	AvlTree T;
-	ElementType A[] = {2, 1, 4, 5, 9, 3, 6, 7}; 
-	int i;
 
-	T = MakeEmpty(NULL);
-	for (i = 0; i < NELEMS(A); ++i) {
-		//T = Insert(A[i], T);
-		T = LoopInsert(A[i], T);
-	}
-
-	ComputeDistAndDepth(T);
-	VPrintAvlTree(T);
-	HPrintAvlTree(T);
-	printf("Min is %d, Max is %d\n", Retrieve(FindMin(T)), Retrieve(FindMax(T)));
-
-	return 0;
-}
-#endif
-
-#if 1
 int main(int argc, char *argv[])
 {
 	AvlTree T;
@@ -58,17 +36,9 @@ int main(int argc, char *argv[])
 
 	ComputeDistAndDepth(T);
 	HPrintAvlTree(T);
-	printf( "Min is %d, Max is %d\n", Retrieve( FindMin( T ) ),
-		Retrieve( FindMax( T ) ) );
-
-	shuffle(A, nr);
-	for (i = 0; i < nr; ++i) {
-		printf("Deleting %d\n", A[i]);
-		T = Delete(A[i], T);
-		ComputeDistAndDepth(T);
-		HPrintAvlTree(T);
-	}
+	InOrder(T);
+	PreOrder(T);
+	PostOrder(T);
 
 	return 0;
 }
-#endif

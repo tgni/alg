@@ -6,10 +6,9 @@
 #include "que.h"
 #include "stack.h"
 
-#define DIST_MAX	(100)
+#define DIST_MAX	(64)
 
-typedef struct AvlNode
-{
+typedef struct AvlNode {
 	list_head_t	List;
 
 	int		Height;
@@ -522,6 +521,86 @@ void HPrintAvlTree(AvlTree T)
 			enqueue(&que, T->Left);
 		if (T->Right)
 			enqueue(&que, T->Right);
+	}
+
+	printf("\n");
+
+	return;
+}
+
+void InOrder(AvlTree T)
+{
+	stack_t S;
+	AvlNode_t *p;
+	int depth;
+
+	stack_init(&S, "insertion path stack", offset_of(AvlNode_t, List));
+	p = T;
+
+	while (p || !is_empty(&S)) {
+		if (p) {
+			push(&S, p);
+			p = p->Left;
+		} else {
+			p = (AvlNode_t *)pop(&S);
+			printf("%d ", p->Element);
+			p = p->Right;
+		}
+	}
+
+	printf("\n");
+	return;
+}
+
+void PreOrder(AvlTree T)
+{
+	stack_t s;
+	AvlNode_t *p;
+
+	stack_init(&s, "xxx", offset_of(AvlNode_t, List));
+	p = T;
+
+	while (p || !is_empty(&s)) {
+		if (p) {
+			push(&s, p);
+			printf("%d ", p->Element);
+			p = p->Left;
+		} else {
+			p = (AvlNode_t *)pop(&s);
+			p = p->Right;
+		}
+	}
+	
+	printf("\n");
+	return;
+}
+
+void PostOrder(AvlTree T)
+{
+	stack_t s;	
+	AvlNode_t *p, *r;
+
+	stack_init(&s, "xxx", offset_of(AvlNode_t, List));
+	p = T;
+
+	while (p || !is_empty(&s)) {
+		if (p) {
+			push(&s, p);	
+			p = p->Left;
+		} else {
+			p = (AvlNode_t *)top(&s);
+			if (p->Right && p->Right != r) { //如果等于r，则可能该根是已经访问过右子树，此时应该pop访问。
+							 //如果不等，则将其右子树及其所有左子节点入栈。
+				p = p->Right;	
+				push(&s, p);
+				p = p->Left;
+			} else {
+				p = (AvlNode_t *)pop(&s);
+				printf("%d ", p->Element);
+				r = p;
+				p = NULL;
+			}
+		}
 	}
 
 	printf("\n");
