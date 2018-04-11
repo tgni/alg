@@ -607,3 +607,33 @@ void PostOrder(AvlTree T)
 
 	return;
 }
+
+int32_t GetHeight(AvlTree T)
+{
+	que_t que;
+	AvlNode_t *front, *rear, *last;
+	int level = 0;
+
+	que_init(&que, "xxx", offset_of(AvlNode_t, List));
+
+	enqueue(&que, T);
+	rear = last = T;
+
+	while ((T = dequeue(&que))) {
+		front = T;
+		if (T->Left) {
+			enqueue(&que, T->Left);
+			rear = T->Left;
+		}
+		if (T->Right) {
+			enqueue(&que, T->Right);	
+			rear = T->Right;
+		}
+		if (front == last) {
+			level++;
+			last = rear;	
+		}
+	}
+
+	return level;
+}

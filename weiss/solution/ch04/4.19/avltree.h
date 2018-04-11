@@ -23,5 +23,6 @@ extern void HPrintAvlTree(AvlTree T);
 extern void InOrder(AvlTree T);
 extern void PreOrder(AvlTree T);
 extern void PostOrder(AvlTree T);
+extern int32_t GetHeight(AvlTree T);
 
 #endif  /* _AvlTree_H */

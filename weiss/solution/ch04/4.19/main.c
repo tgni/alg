@@ -39,6 +39,7 @@ int main(int argc, char *argv[])
 	InOrder(T);
 	PreOrder(T);
 	PostOrder(T);
+	printf("Height: %d\n", GetHeight(T));
 
 	return 0;
 }
