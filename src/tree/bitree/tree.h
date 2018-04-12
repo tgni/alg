@@ -6,7 +6,7 @@
 typedef struct BiTNode {
 	TElemType data;
 	struct BiTNode *lchild, *rchild;
-	int depth;
+	int depth, dist;
 } BiTNode, *BiTree;
 
 typedef int32_t (*VisitFn)(void *p);
