@@ -45,7 +45,7 @@ void print_array(int v[], int n)
 
 void shuffle(int v[], int n)
 {
-	int i, j;
+	int i;
 	
 	srand(time(NULL));
 

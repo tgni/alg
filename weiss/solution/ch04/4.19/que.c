@@ -29,7 +29,6 @@ void enqueue(que_t *q, void *obj)
 
 void * dequeue(que_t *q)
 {
-	uint32_t cpu_sr;
 	void *obj;
 
 	if (list_empty(&q->head))

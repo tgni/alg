@@ -168,39 +168,33 @@ static Position DoubleRotateWithRight( Position K1 )
 
 AvlTree Insert( ElementType X, AvlTree T )
 {
-	if( T == NULL )
-	{
+	if( T == NULL ) {
 		/* Create and return a one-node tree */
 		T = malloc( sizeof( struct AvlNode ) );
 		if( T == NULL )
 			FatalError( "Out of space!!!" );
-		else
-		{
+		else {
 			T->Element = X; T->Height = 0;
 			T->Left = T->Right = NULL;
 		}
-	}
-	else
-	{
-		if( X < T->Element )
-		{
+	} else {
+		if( X < T->Element ) {
 			T->Left = Insert( X, T->Left );
-			if( Height( T->Left ) - Height( T->Right ) == 2 )
+			if( Height( T->Left ) - Height( T->Right ) == 2 ) {
 				if( X < T->Left->Element )
 					T = SingleRotateWithLeft( T );
 				else
 					T = DoubleRotateWithLeft( T );
-		}
-		else 
-		{
-			if( X > T->Element )
-			{
+			}
+		} else {
+			if( X > T->Element ) {
 				T->Right = Insert( X, T->Right );
-				if( Height( T->Right ) - Height( T->Left ) == 2 )
+				if( Height( T->Right ) - Height( T->Left ) == 2 ) {
 					if( X > T->Right->Element )
 						T = SingleRotateWithRight( T );
 					else
 						T = DoubleRotateWithRight( T );
+				}
 			}
 		}
 	}
@@ -305,7 +299,6 @@ AvlTree LoopInsert(ElementType X, AvlTree T)
 void ComputeDistAndDepth( AvlTree T )
 {
 	que_t que;
-	int Depth, Dist;
 
 	if (T == NULL)
 		return;
@@ -532,7 +525,6 @@ void InOrder(AvlTree T)
 {
 	stack_t S;
 	AvlNode_t *p;
-	int depth;
 
 	stack_init(&S, "insertion path stack", offset_of(AvlNode_t, List));
 	p = T;
@@ -607,6 +599,55 @@ void PostOrder(AvlTree T)
 
 	return;
 }
+
+
+void LevelOrder(AvlTree T)
+{
+	que_t q;
+
+	que_init(&q, "xxx", offset_of(AvlNode_t, List));
+
+	enqueue(&q, T);
+
+	while ((T = dequeue(&q))) {
+		printf("%d ", T->Element);
+		if (T->Left)	
+			enqueue(&q, T->Left);
+		if (T->Right)
+			enqueue(&q, T->Right);
+	}
+
+	printf("\n");
+
+	return;
+}
+
+void ReverseLevelOrder(AvlTree T)
+{
+	que_t q;
+	stack_t s;
+	AvlNode_t *p;
+
+	stack_init(&s, "xxx", offset_of(AvlNode_t, List));
+	que_init(&q, "xxx", offset_of(AvlNode_t, List));
+
+	enqueue(&q, T);
+
+	while ((T = dequeue(&q))) {
+		push(&s, T);
+		if (T->Left)	
+			enqueue(&q, T->Left);
+		if (T->Right)
+			enqueue(&q, T->Right);
+	}
+
+	while ((p = (AvlNode_t *)pop(&s)))
+		printf("%d ", p->Element);
+	printf("\n");
+
+	return;
+}
+
 
 int32_t GetHeight(AvlTree T)
 {
