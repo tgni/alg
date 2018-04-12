@@ -11,6 +11,7 @@ void DisposeQueue( Queue Q );
 void Enqueue( ElementType X, Queue Q );
 ElementType Front( Queue Q );
 ElementType Dequeue( Queue Q );
+int IsEmptyQ( Queue Q );
 
 #endif  /* _Queue_h */
 /* END */

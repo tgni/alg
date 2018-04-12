@@ -14,7 +14,7 @@ struct QueueRecord {
 
 static void MakeEmpty( Queue Q );
 
-static int IsEmpty( Queue Q )
+int IsEmptyQ( Queue Q )
 {
 	return Q->Size == 0;
 }
@@ -79,7 +79,7 @@ void Enqueue( ElementType X, Queue Q )
 
 ElementType Front( Queue Q )
 {
-	if( !IsEmpty( Q ) )
+	if( !IsEmptyQ( Q ) )
 		return Q->Array[ Q->Front ];
 	Error( "Empty queue" );
 	return 0;
@@ -88,7 +88,7 @@ ElementType Front( Queue Q )
 /*
 void Dequeue( Queue Q )
 {
-	if ( IsEmpty( Q ) )
+	if ( IsEmptyQ( Q ) )
 		Error( "Empty queue" );
 	else {
 		Q->Size--;
@@ -101,7 +101,7 @@ ElementType Dequeue( Queue Q )
 {
 	ElementType X = 0;
 
-	if( IsEmpty( Q ) ) {
+	if( IsEmptyQ( Q ) ) {
 		return (ElementType)0;
 	} else {
 		Q->Size--;

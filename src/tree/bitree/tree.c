@@ -51,6 +51,26 @@ BiTree Create(TElemType A[], int nr)
 }
 
 
+void Destroy(BiTree T)
+{
+	Queue que;
+
+	que = CreateQueue(MaxTreeElement);
+	Enqueue(T, que);
+
+	while ((T = Dequeue(que))) {
+		if (T->lchild)
+			Enqueue(T->lchild, que);
+		if (T->rchild)
+			Enqueue(T->rchild, que);
+		free(T);
+	}
+	DisposeQueue(que);
+
+	return;
+}
+
+
 #define NR_DEPTH_MAX	256
 static int __LAST[NR_DEPTH_MAX] = {0};
 
@@ -342,6 +362,8 @@ void ReverseLevelOrder(BiTree T)
 	while ((p = (BiTNode *)Pop(S)))
 		printf("%d ", p->data);
 	printf("\n");
+	DisposeQueue(que);
+	DisposeStack(S);
 
 	return;
 }
@@ -376,6 +398,75 @@ int32_t GetHeight(BiTree T)
 	return level;
 }
 
+BiTree PreInCreat(TElemType A[], TElemType B[], int l1, int h1, int l2, int h2)
+{
+	BiTree T;
+	int i, llen, rlen;
+
+	if (!(T = (BiTNode *)malloc(sizeof(BiTNode))))
+		return NULL;
+
+	T->data = A[l1];
+	for (i = l2; B[i] != T->data; ++i)
+		;
+	if ((llen = i - l2))
+		T->lchild = PreInCreat(A, B, l1+1, l1+llen, l2, l2+llen-1);
+	else
+		T->lchild = NULL;
+
+	if ((rlen = h2 - i))
+		T->rchild = PreInCreat(A, B, h1-rlen+1, h1, h2-rlen+1, h2);
+	else
+		T->rchild = NULL;
+
+	return T;
+}
+
+int IsComplete(BiTree T)
+{
+	Queue que;
+
+	que = CreateQueue(MaxTreeElement);
+	Enqueue(T, que);
+
+	while (!IsEmptyQ(que)) {
+		if ((T = Dequeue(que))) {
+			Enqueue(T->lchild, que);
+			Enqueue(T->rchild, que);
+		} else {
+			while (!IsEmptyQ(que)) {
+				if ((T = Dequeue(que)))
+					return 0;
+			}
+		}
+	}
+	
+	return 1;
+}
+
+int DsonNodes(BiTree T)
+{
+	if (!T) 
+		return 0;
+	else if (T->lchild && T->rchild)
+		return DsonNodes(T->lchild) + DsonNodes(T->rchild) + 1;
+	else
+		return DsonNodes(T->lchild) + DsonNodes(T->rchild);
+}
+
+/*
+                                                                1
+                                /-------------------------------|-------------------------------\
+                                3                                                               2
+                /---------------|---------------\                               /---------------|---------------\
+                6                               5                               4                               7
+        /-------|-------\               /-------|
+        9               10              8
+Inorder:   9 6 10 3 8 5 1 4 2 7 
+Preorder:  1 3 6 9 10 5 8 2 4 7 
+PostOrder: 9 10 6 8 5 3 4 7 2 1 
+Height:    4
+*/
 
 int main(void)
 {
@@ -383,16 +474,31 @@ int main(void)
 	TElemType A[] = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
 
 	srand(time(NULL));
-	
 	T = Create(A, 10);
 	ComputeDistAndDepth(T);
-	//PrintDir(T);
 	PrintTree(T);
-	InOrder(T);
-	PreOrder(T);
-	PostOrder(T);
-	printf("Height: %d\n", GetHeight(T));
+	printf("DsonNodes: %d\n", DsonNodes(T));
+	Destroy(T);
 
+	/*
+	while (1) {
+		T = Create(A, 10);
+		ComputeDistAndDepth(T);
+		PrintTree(T);
+		if (IsComplete(T))
+			break;
+		Destroy(T);
+	}
+	*/
+	/*
+	TElemType A[] = {-1, 1, 3, 6, 9, 10, 5, 8, 2, 4, 7};
+	TElemType B[] = {-1, 9, 6, 10, 3, 8, 5, 1, 4, 2, 7};
+	BiTree T;
+
+	T = PreInCreat(A, B, 1, 10, 1, 10);
+	ComputeDistAndDepth(T);
+	PrintTree(T);
+	*/
 
 	return 0;
 }
