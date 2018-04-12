@@ -454,6 +454,126 @@ int DsonNodes(BiTree T)
 		return DsonNodes(T->lchild) + DsonNodes(T->rchild);
 }
 
+void Swap(BiTree T)
+{
+	BiTNode *p;
+
+	if (T->lchild)
+		Swap(T->lchild);
+	if (T->rchild)
+		Swap(T->rchild);
+
+	p = T->lchild;
+	T->lchild = T->rchild;
+	T->rchild = p;
+
+	return;
+}
+
+TElemType PreOrderK(BiTree T, int k)
+{
+	Stack S;
+	BiTNode *p;
+	int i = 0;
+
+	S = CreateStack();
+	p = T;
+
+	while (p || !IsEmpty(S)) {
+		if (p) {
+			Push(p, S);
+			if (++i == k)
+				return p->data;
+			p = p->lchild;
+		} else {
+			p = (BiTNode *)Pop(S);
+			p = p->rchild;
+		}
+	}
+
+	DisposeStack(S);
+	return -1;
+}
+
+void DeleteSubTree(BiTree T, TElemType x)
+{
+	Queue que;
+
+	que = CreateQueue(MaxTreeElement);
+	Enqueue(T, que);
+
+	while ((T = Dequeue(que))) {
+		if (T->lchild && T->lchild->data == x) {
+			Destroy(T->lchild);
+			T->lchild = NULL;
+		} else {
+			Enqueue(T->lchild, que);
+		}
+		if (T->rchild && T->rchild->data == x) {
+			Destroy(T->rchild);
+			T->rchild = NULL;
+		} else {
+			Enqueue(T->rchild, que);
+		}
+	}
+
+	DisposeQueue(que);
+
+	return;
+}
+
+void SearchAncestor(BiTree T, TElemType x)
+{
+	Stack S;	
+	BiTNode *p, *r;
+
+	S = CreateStack();
+	p = T;
+
+	while (p || !IsEmpty(S)) {
+		if (p) {
+			Push(p, S);	
+			p = p->lchild;
+		} else {
+			p = (BiTNode *)Top(S);
+			if (p->rchild && p->rchild != r) {
+				p = p->rchild;
+				Push(p, S);
+				p = p->lchild;
+			} else {
+				p = (BiTNode *)Pop(S);
+				if (p->data == x) {
+					while(!IsEmpty(S)) {
+						p = (BiTNode *)Pop(S);
+						printf("%d ", p->data);
+					}
+					printf("\n");
+					DisposeStack(S);
+					return;
+				}
+				r = p;
+				p = NULL;
+			}
+		}
+	}
+
+	DisposeStack(S);
+}
+
+void Pre2Post(TElemType pre[], int l1, int h1, TElemType post[], int l2, int h2)
+{
+	int half;
+	
+	if (h1 >= l1) {
+		post[h2] = pre[l1];
+		half = (h1 - l1) / 2;
+		Pre2Post(pre, l1+1, l1+half, post, l2, l2+half-1);
+		Pre2Post(pre, l1+half+1, h1, post, l2+half, h2-1);
+	}
+
+	return;
+}
+
 /*
                                                                 1
                                 /-------------------------------|-------------------------------\
@@ -470,6 +590,7 @@ Height:    4
 
 int main(void)
 {
+	/*
 	BiTree T;
 	TElemType A[] = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
 
@@ -477,9 +598,15 @@ int main(void)
 	T = Create(A, 10);
 	ComputeDistAndDepth(T);
 	PrintTree(T);
+	SearchAncestor(T, 10);
+	for (i = 1; i <= 10; ++i)
+		printf("PreOrder No.%d: %d\n", i, PreOrderK(T, i));
+	Swap(T);
+	ComputeDistAndDepth(T);
+	PrintTree(T);
 	printf("DsonNodes: %d\n", DsonNodes(T));
 	Destroy(T);
-
+	*/
 	/*
 	while (1) {
 		T = Create(A, 10);
@@ -499,6 +626,15 @@ int main(void)
 	ComputeDistAndDepth(T);
 	PrintTree(T);
 	*/
+
+	TElemType pre[7] = {1,2,3,4,5,6,7};
+	TElemType post[7];
+	int i;
+	
+	Pre2Post(pre, 0, 6, post, 0, 6);
+	for (i = 0; i < 7; ++i)
+		printf("%d ", post[i]);
+	printf("\n");
 
 	return 0;
 }
