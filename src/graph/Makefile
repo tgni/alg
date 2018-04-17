@@ -1,5 +1,4 @@
-all: mygraph
-mygraph:
-	gcc -o $@  graph.c queue.c binheap.c
+all:
+	gcc graph.c queue.c binheap.c -o test
 clean:
-	rm -f *.o mygraph
+	rm -f *.o test

@@ -1,25 +1,24 @@
-        typedef int ElementType;
-/* START: fig3_57.txt */
-        #ifndef _Queue_h
-        #define _Queue_h
+#ifndef _Queue_h
+#define _Queue_h
 
-        struct QueueRecord;
-        typedef struct QueueRecord *Queue;
+typedef int ElementType;
+typedef struct QueueRecord *Queue;
 
-        struct QueueOps {
-                int (*IsEmpty)( Queue Q );
-                int (*IsFull)( Queue Q );
-                void (*MakeEmpty)( Queue Q );
-                void (*Enqueue)( ElementType X, Queue Q );
-                ElementType (*Front)( Queue Q );
-                void (*Dequeue)( Queue Q );
-                ElementType (*FrontAndDequeue)( Queue Q );
-        };
+struct QueueRecord {
+	int Capacity;
+	int Front;
+	int Rear;
+	int Size;
+	ElementType *Array;
+	
+	int (*IsFull)( Queue Q );
+	void (*Enqueue)( ElementType X, Queue Q );
+	ElementType (*Dequeue)( Queue Q );
+	int (*IsEmpty)( Queue Q );
+};
 
-        Queue CreateQueue( int MaxElements );
-        void DisposeQueue( Queue Q );
-        struct QueueOps *RegisterQueueOps(void);
-        void UnRegisterQueueOps(struct QueueOps *op);
+Queue CreateQueue(int MaxElements);
+void DisposeQueue(Queue Q);
 
-        #endif  /* _Queue_h */
+#endif  /* _Queue_h */
 /* END */

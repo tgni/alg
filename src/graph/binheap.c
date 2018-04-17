@@ -5,28 +5,14 @@
 #define MinPQSize (10)
 #define MinData (-32767)
 
-struct HeapStruct
-{
-        int Capacity;
-        int Size;
-        ElementType *Elements;
-};
-
-static void MakeEmpty( PriorityQueue H );
-static void Insert( ElementType X, PriorityQueue H );
-static ElementType DeleteMin( PriorityQueue H );
-static ElementType FindMin( PriorityQueue H );
-static int IsEmpty( PriorityQueue H );
-static int IsFull( PriorityQueue H );
-
-static void Ecpy(ElementType *d, ElementType *s)
+static void Ecpy(HeapElemType *d, HeapElemType *s)
 {
         d->v = s->v;
         d->dv = s->dv;
 }
 
 /*big >= small , return 1; else return 0*/
-static int Ecmp(ElementType *b, ElementType *s)
+static int Ecmp(HeapElemType *b, HeapElemType *s)
 {
         if (b->dv >= s->dv)
                 return 1;
@@ -34,40 +20,24 @@ static int Ecmp(ElementType *b, ElementType *s)
                 return 0;
 }
 
-PriorityQueue Initialize( int MaxElements )
-{
-        PriorityQueue H;
-
-        if( MaxElements < MinPQSize )
-                Error( "Priority queue size is too small" );
-
-        H = malloc( sizeof( struct HeapStruct ) );
-        if( H ==NULL )
-                FatalError( "Out of space!!!" );
-
-        /* Allocate the array plus one extra for sentinel */
-        H->Elements = malloc( ( MaxElements + 1 )
-                * sizeof( ElementType ) );
-        if( H->Elements == NULL )
-                FatalError( "Out of space!!!" );
-
-        H->Capacity = MaxElements;
-        H->Size = 0;
-        H->Elements[ 0 ].dv = MinData;
-        H->Elements[ 0 ].v = 0;
-
-        return H;
-}
-
-
 static void MakeEmpty( PriorityQueue H )
 {
         H->Size = 0;
 }
 
+static int IsEmpty( PriorityQueue H )
+{
+        return H->Size == 0;
+}
+
+static int IsFull( PriorityQueue H )
+{
+        return H->Size == H->Capacity;
+}
+
 /* H->Element[ 0 ] is a sentinel */
 
-static void Insert( ElementType X, PriorityQueue H )
+static void Insert( HeapElemType X, PriorityQueue H )
 {
         int i;
 
@@ -84,10 +54,10 @@ static void Insert( ElementType X, PriorityQueue H )
         Ecpy(&H->Elements[ i ], &X);
 }
 
-static ElementType DeleteMin( PriorityQueue H )
+static HeapElemType DeleteMin( PriorityQueue H )
 {
         int i, Child;
-        ElementType MinElement, LastElement;
+        HeapElemType MinElement, LastElement;
 
         if( IsEmpty( H ) )
         {
@@ -115,22 +85,12 @@ static ElementType DeleteMin( PriorityQueue H )
         return MinElement;
 }
 
-static ElementType FindMin( PriorityQueue H )
+static HeapElemType FindMin( PriorityQueue H )
 {
         if( !IsEmpty( H ) )
                 return H->Elements[ 1 ];
         Error( "Priority Queue is Empty" );
         return H->Elements[ 0 ];
-}
-
-static int IsEmpty( PriorityQueue H )
-{
-        return H->Size == 0;
-}
-
-static int IsFull( PriorityQueue H )
-{
-        return H->Size == H->Capacity;
 }
 
 void Destroy( PriorityQueue H )
@@ -139,30 +99,35 @@ void Destroy( PriorityQueue H )
         free( H );
 }
 
-#if 0
-for( i = N / 2; i > 0; i-- )
-PercolateDown( i );
-#endif
 
-struct HeapOps *RegisterHeapOps(void)
+PriorityQueue Initialize( int MaxElements )
 {
-        struct HeapOps *op;
+        PriorityQueue H;
 
-        op = (struct HeapOps *)malloc(sizeof(struct HeapOps));
-        if (!op) return NULL;
+        if( MaxElements < MinPQSize )
+                Error( "Priority queue size is too small" );
 
-        op->MakeEmpty = MakeEmpty;
-        op->Insert = Insert;
-        op->DeleteMin = DeleteMin;
-        op->FindMin = FindMin;
-        op->IsEmpty = IsEmpty;
-        op->IsFull = IsFull;
+        H = malloc( sizeof( struct HeapStruct ) );
+        if( H ==NULL )
+                FatalError( "Out of space!!!" );
 
-        return op;
-}
-void UnRegisterHeapOps(struct HeapOps *op)
-{
-        if (!op)
-                return;
-        free(op);
+        /* Allocate the array plus one extra for sentinel */
+        H->Elements = malloc( ( MaxElements + 1 )
+                * sizeof( HeapElemType ) );
+        if( H->Elements == NULL )
+                FatalError( "Out of space!!!" );
+
+        H->Capacity = MaxElements;
+        H->Size = 0;
+        H->Elements[ 0 ].dv = MinData;
+        H->Elements[ 0 ].v = 0;
+
+        H->MakeEmpty = MakeEmpty;
+        H->Insert = Insert;
+        H->DeleteMin = DeleteMin;
+        H->FindMin = FindMin;
+        H->IsEmpty = IsEmpty;
+        H->IsFull = IsFull;
+
+        return H;
 }
