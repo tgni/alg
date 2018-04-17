@@ -5,6 +5,7 @@
 #include "list.h"
 #include "queue.h"
 #include "binheap.h"
+#include "stack.h"
 
 #define KEY(x) (x - 1)
 #define Infinity    (0xFFFF)
@@ -138,39 +139,36 @@ int32_t create_indegree(struct graph *g)
         return OK;
 }
 
-#if 0
 void top_sort(struct graph *g)
 {
         Queue q;
-        struct QueueOps *op;
         struct eage *e;
-        struct list_head *h;
-        int32_t top_num[10];
+        //int32_t top_num[10];
         int32_t counter = 0, v;
 
         q = CreateQueue(g->vertices);
-        op = RegisterQueueOps();
 
-        op->MakeEmpty(q);
         for (v = 1; v <= g->vertices; v++)
                 if (g->indegree[KEY(v)] == 0)
-                        op->Enqueue(v, q);
+                        q->Enqueue(v, q);
+
         printf("top sort: \n");
-        while (!op->IsEmpty(q)) {
-                v = op->FrontAndDequeue(q);        
-                top_num[v] = ++counter;
+        while (!q->IsEmpty(q)) {
+                v = q->Dequeue(q);        
+                //top_num[v] = ++counter;
                 printf("v%d ", v);
-                list_for_each_entry(e, h, &g->list[KEY(v)], node) {
+                list_for_each_entry(e, &g->list[KEY(v)], node) {
                         if (--g->indegree[KEY(e->right)] == 0)
-                                op->Enqueue(e->right, q);
+                                q->Enqueue(e->right, q);
                 }
         }
         printf("\n");
 
         DisposeQueue(q);
-        UnRegisterQueueOps(op);
+	return;
 }
 
+#if 0
 void unweighted(struct graph *g, int32_t s)
 {
         Queue q;
@@ -203,7 +201,6 @@ void unweighted(struct graph *g, int32_t s)
         DisposeQueue(q);
         UnRegisterQueueOps(op);
 }
-
 #endif
 
 void BFS(Graph g, int s)
@@ -267,7 +264,38 @@ void DFS(Graph g, int v)
 	return;
 }
 
-void DFSTraverse(Graph g)
+void DFSNoRC(Graph g, int v)
+{
+	Stack s;
+	Eage e;
+	int k;
+
+	s = CreateStack();
+
+	Push(v, s);
+	g->record[KEY(v)].known = TRUE;
+
+	while (!StackIsEmpty(s)) {
+		k = Pop(s);
+		printf("%d ", k);
+
+		list_for_each_entry(e, &g->list[KEY(v)], node) {
+			if (!g->record[KEY(e->right)].known) {
+				Push(e->right, s);
+				g->record[KEY(e->right)].known = TRUE;
+			}
+		}
+	}
+
+	DisposeStack(s);	
+
+	return;
+}
+
+
+#define RC_MODE		1
+#define NONRC_MODE	0
+void DFSTraverse(Graph g, int mode)
 {
 	int i;
 
@@ -277,7 +305,11 @@ void DFSTraverse(Graph g)
 
 	for (i = 1; i <= g->vertices; ++i) {
 		if (!g->record[KEY(i)].known)
-			DFS(g, i);
+			if (mode) {
+				DFS(g, i);
+			} else {
+				DFSNoRC(g, i);
+			}
 	}
 	printf("\n");
 
@@ -394,10 +426,10 @@ int32_t graph_test(void)
                 add_eage(g, e[i][0], e[i][1], 1);
         show_graph(g);
 	BFSTraverse(g);
-	DFSTraverse(g);
-
-        //create_indegree(g);
-        //top_sort(g);
+	DFSTraverse(g, RC_MODE);
+	DFSTraverse(g, NONRC_MODE);
+        create_indegree(g);
+        top_sort(g);
 
         return OK;
 }

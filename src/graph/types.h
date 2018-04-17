@@ -36,6 +36,7 @@ typedef int			int32_t;
 typedef short			int16_t;
 typedef signed char		int8_t;
 
+typedef int			ElementType;
 
 #define htons(n)		((uint16_t)(((n) & 0xff) << 8) | (((n) & 0xff00) >> 8))
 #define htonl(n)		((uint32_t)( \

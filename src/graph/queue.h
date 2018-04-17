@@ -1,7 +1,8 @@
 #ifndef _Queue_h
 #define _Queue_h
 
-typedef int ElementType;
+#include "types.h"
+
 typedef struct QueueRecord *Queue;
 
 struct QueueRecord {
