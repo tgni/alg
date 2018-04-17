@@ -183,30 +183,6 @@ void PrintNode(BiTree T)
 	return;
 }
 
-void PrintTree(BiTree T)
-{
-	Queue que;
-
-	if (T == NULL)
-		return;
-
-	que = CreateQueue(MaxTreeElement);
-	Enqueue(T, que);
-
-	while ((T = Dequeue(que))) {
-		PrintNode(T);
-		if (T->lchild)
-			Enqueue(T->lchild, que);
-		if (T->rchild)
-			Enqueue(T->rchild, que);
-	}
-	printf("\n");
-
-	DisposeQueue(que);
-
-	return;
-}
-
 void ComputeDistAndDepth(BiTree T)
 {
 	Queue que;
@@ -228,6 +204,33 @@ void ComputeDistAndDepth(BiTree T)
 			Enqueue(T->rchild, que);
 		}
 	}
+
+	DisposeQueue(que);
+
+	return;
+}
+
+
+void PrintTree(BiTree T)
+{
+	Queue que;
+
+	if (T == NULL)
+		return;
+
+	ComputeDistAndDepth(T);
+
+	que = CreateQueue(MaxTreeElement);
+	Enqueue(T, que);
+
+	while ((T = Dequeue(que))) {
+		PrintNode(T);
+		if (T->lchild)
+			Enqueue(T->lchild, que);
+		if (T->rchild)
+			Enqueue(T->rchild, que);
+	}
+	printf("\n");
 
 	DisposeQueue(que);
 
@@ -573,6 +576,88 @@ void Pre2Post(TElemType pre[], int l1, int h1, TElemType post[], int l2, int h2)
 
 	return;
 }
+/*
+void ListLeaves(BiTree T, BiTree list)
+{
+	Queue que;
+	BiTNode *pre;
+
+	que = CreateQueue(MaxTreeElement);
+	Enqueue(T, que);
+
+	while ((T = Dequeue(que))) {
+		if (!T->lchild && !T->rchild) {
+			if (!list->rchild) {
+				list->rchild = T;	
+				pre = T;
+			} else {
+				pre->rchild = T;
+				pre = pre->rchild;
+			}
+		}
+		if (T->lchild)
+			Enqueue(T->lchild, que);
+		if (T->rchild)
+			Enqueue(T->rchild, que);
+	}
+	DisposeQueue(que);
+
+	return;
+}
+*/
+
+void ListLeaves(BiTree T, BiTree list)
+{
+	Stack S;
+	BiTree p;
+	BiTNode *pre;
+
+	S = CreateStack();
+	p = T;
+
+	while (p || !IsEmpty(S)) {
+		if (p) {
+			Push(p, S);
+			p = p->lchild;
+		} else {
+			p = (BiTree)Pop(S);
+			if (!p->lchild && !p->rchild) {
+				if (!list->rchild) {
+					list->rchild = p;
+					pre = p;
+				} else {
+					pre->rchild = p;
+					pre = pre->rchild;
+				}
+			}
+			p = p->rchild;
+		}
+	}
+
+	DisposeStack(S);
+	return;
+}
+
+void PrintLeaves(BiTree list)
+{
+	BiTNode *p = list->rchild;
+
+	while (p) {
+		printf("%d ", p->data);
+		p = p->rchild;
+	}
+	printf("\n");
+}
+
+int Similar(BiTree A, BiTree B)
+{
+	if (A && B)
+		return Similar(A->lchild, B->lchild) && Similar(A->rchild, B->rchild);
+	else if (!A && !B)
+		return TRUE;
+
+	return FALSE;
+}
 
 /*
                                                                 1
@@ -590,14 +675,33 @@ Height:    4
 
 int main(void)
 {
-	/*
-	BiTree T;
+	BiTree T1, T2;
 	TElemType A[] = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
 
 	srand(time(NULL));
-	T = Create(A, 10);
-	ComputeDistAndDepth(T);
-	PrintTree(T);
+	while (1) {
+		T1 = Create(A, 10);
+		T2 = Create(A, 10);
+
+		PrintTree(T1);
+		PrintTree(T2);
+
+		if (Similar(T1, T2))
+			break;
+
+		Destroy(T1);	
+		Destroy(T2);	
+	}
+
+	return 0;
+#if 0
+	BiTNode list;
+
+	list.data = -1;
+	list.lchild = list.rchild = NULL;
+	ListLeaves(T, &list);
+	PrintLeaves(&list);
+
 	SearchAncestor(T, 10);
 	for (i = 1; i <= 10; ++i)
 		printf("PreOrder No.%d: %d\n", i, PreOrderK(T, i));
@@ -606,8 +710,7 @@ int main(void)
 	PrintTree(T);
 	printf("DsonNodes: %d\n", DsonNodes(T));
 	Destroy(T);
-	*/
-	/*
+
 	while (1) {
 		T = Create(A, 10);
 		ComputeDistAndDepth(T);
@@ -616,8 +719,7 @@ int main(void)
 			break;
 		Destroy(T);
 	}
-	*/
-	/*
+
 	TElemType A[] = {-1, 1, 3, 6, 9, 10, 5, 8, 2, 4, 7};
 	TElemType B[] = {-1, 9, 6, 10, 3, 8, 5, 1, 4, 2, 7};
 	BiTree T;
@@ -625,7 +727,6 @@ int main(void)
 	T = PreInCreat(A, B, 1, 10, 1, 10);
 	ComputeDistAndDepth(T);
 	PrintTree(T);
-	*/
 
 	TElemType pre[7] = {1,2,3,4,5,6,7};
 	TElemType post[7];
@@ -635,6 +736,5 @@ int main(void)
 	for (i = 0; i < 7; ++i)
 		printf("%d ", post[i]);
 	printf("\n");
-
-	return 0;
+#endif
 }
