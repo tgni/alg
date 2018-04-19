@@ -1,62 +1,58 @@
 #include <stdio.h>
 #include "types.h"
 
-void print_array(int32_t a[], int32_t length, int32_t i, int32_t p, int32_t j, int32_t r);
+void PrintArray(int32_t a[], int32_t length);
 
-int32_t partition(int32_t a[], int32_t p, int32_t r)
+int32_t Partition(int32_t A[], int32_t low, int32_t high)
 {
-	int32_t x, i, j;
+	int32_t pivot = A[low];
 
-	x = a[r];
-	i = p - 1;
-
-	for (j = p; j <= r-1; ++j) {
-		if (a[j] <= x) {
-			i++;	
-			swap(a[i], a[j]);
-		}
-		print_array(a, r, i, p, j, r);
+	while (low < high) {
+		while (low < high && A[high] >= pivot) --high;
+		A[low] = A[high];
+		while (low < high && A[low] <= pivot) ++low;
+		A[high] = A[low];
 	}
-	swap(a[i+1], a[r]);
-	print_array(a, r, i, p, j, r);
+	A[low] = pivot;
 
-	return i+1;
+	return low;
 }
 
-void quicksort(int32_t a[], int32_t p, int32_t r)
+void QuickSort(int32_t a[], int32_t low, int32_t high, int32_t i)
 {
-	int32_t q;
+	int32_t p;
 
-	if (p < r) {
-		q = partition(a, p, r);
-		quicksort(a, p, q-1);
-		quicksort(a, q+1, r);
+	if (low < high) {
+		printf("%d:", ++i);
+		PrintArray(a, 6);
+		p = Partition(a, low, high);
+		QuickSort(a, low, p-1, i);
+		QuickSort(a, p+1, high, i);
 	}
 
 	return;
 }
 
-void print_array(int32_t a[], int32_t length, int32_t i, int32_t p, int32_t j, int32_t r)
+void PrintArray(int32_t a[], int32_t length)
 {
 	int32_t idx;
 
-	for (idx = 1; idx <= length; ++idx)
+	for (idx = 0; idx < length; ++idx)
 		printf("%d ", a[idx]);
-	printf(" i:%d p:%d j:%d r:%d\n", i, p, j, r);
-
-	return;
+	printf("\n");
 }
 
 
 int main(void)
 {
-	//int32_t a[] = {0, 16, 14, 10, 8, 7, 9, 3, 2, 4, 1};
-	//int32_t a[] = {0, 1, 14, 10, 8, 7, 9, 3, 2, 16, 4};
-	int32_t a[] = {0, 1, 2, 3, 4, 7, 8, 9, 10, 14, 16};
+	int32_t a[] = {46, 79, 56, 38, 40, 84};
+	//int32_t a[] = {46, 79, 80, 81, 82, 83};
 	int32_t length;
 
-	length = sizeof(a) / sizeof(int32_t) - 1;
-	quicksort(a, 1, length);
+	length = sizeof(a) / sizeof(int32_t);
+	//PrintArray(a, length);
+	QuickSort(a, 0, length-1, 0);
+	//PrintArray(a, length);
 
 	return 0;
 }

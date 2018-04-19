@@ -9,6 +9,8 @@
 #define LEFT(i)		(2 * (i))
 #define RIGHT(i)	(2 * (i) + 1)
 
+void print_array(int32_t a[], int32_t length);
+
 void max_heapify(int32_t a[], int32_t i, int32_t heapsize)
 {
 	int l, r, largest;
@@ -50,6 +52,7 @@ void heap_sort(int32_t a[], int32_t length)
 	int32_t i, heapsize = length;
 
 	build_max_heap(a, length);
+	print_array(a, length);
 
 	for (i = length; i >= 2; --i) {
 		swap(a[1], a[i]);
