@@ -290,7 +290,7 @@ void PreOrder(BiTree T)
 void PostOrder(BiTree T)
 {
 	Stack S;	
-	BiTNode *p, *r;
+	BiTNode *p, *r = NULL;
 
 	S = CreateStack();
 	p = T;

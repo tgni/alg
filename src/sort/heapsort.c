@@ -11,41 +11,47 @@
 
 void print_array(int32_t a[], int32_t length);
 
-void max_heapify(int32_t a[], int32_t i, int32_t heapsize)
+void adjust_down(int32_t A[], int32_t k, int len)
 {
-	int l, r, largest;
+	int32_t i;
+	
+	A[0] = A[k];
 
-	l = LEFT(i);
-	r = RIGHT(i);
-
-	if (l <= heapsize && a[l] > a[i])
-		largest = l;
-	else
-		largest = i;
-	if (r <= heapsize && a[r] > a[largest])
-		largest = r;
-
-	if (largest != i) {
-		swap(a[i], a[largest]);
-		max_heapify(a, largest, heapsize);
+	for (i = 2*k; i <= len; i *= 2) {
+		if (i < len && A[i] < A[i+1])
+			i++;
+		if (A[0] >= A[i]) {
+			break;
+		} else {
+			A[k] = A[i];
+			k = i;
+		}
 	}
+	A[k] = A[0];
+}
 
-	return;
+void adjust_up(int32_t A[], int k)
+{
+	int32_t i = k/2; //parent
+
+	A[0] = A[k];
+
+	while (i > 0 && A[i] > A[0]) {
+		A[k] = A[i];
+		k = i;
+		i = k/2;
+	}
+	A[k] = A[0];
 }
 
 
 void build_max_heap(int32_t a[], int32_t length)
 {
-	int32_t heapsize, i;
+	int32_t i;
 
-	heapsize = length;
-
-	for (i = mod_floor(length, 2); i >= 1; --i)
-		max_heapify(a, i, heapsize);
-
-	return;
+	for (i = length/2; i > 0; --i)
+		adjust_down(a, i, length);
 }
-
 
 void heap_sort(int32_t a[], int32_t length)
 {
@@ -57,7 +63,7 @@ void heap_sort(int32_t a[], int32_t length)
 	for (i = length; i >= 2; --i) {
 		swap(a[1], a[i]);
 		heapsize--;
-		max_heapify(a, 1, heapsize);
+		adjust_down(a, 1, heapsize);
 	}
 	
 	return;
