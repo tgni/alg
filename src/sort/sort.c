@@ -144,7 +144,7 @@ void select_sort(int a[], int n)
  * array's subscript starts from 0, while this algorithm starts from 1. 
  */
 
-#define PaREnT(i)	mod_ceiling(i, 2)
+#define PARENT(i)	mod_ceiling(i, 2)
 #define LEFT(i)		(2 * (i))
 #define RIGHT(i)	(2 * (i) + 1)
 
@@ -409,7 +409,35 @@ void radix_sort(int a[], int n)
 
 void counting_sort(int a[], int n)
 {
+	int i, max = 0, *b, *c;
 
+	for (i = 0; i < n; ++i)
+		if (max < a[i]) max = a[i];
+
+	if (!(c = malloc(sizeof(int)*(max+1))))
+		return;
+	if (!(b = malloc(sizeof(int)*n))) {
+		free(c);
+		return;
+	}
+
+	for (i = 0; i < max+1; ++i)
+		c[i] = 0;
+	for (i = 0; i < n; ++i)
+		c[a[i]] += 1;
+	for (i = 1; i < max+1; ++i)
+		c[i] = c[i] + c[i-1];
+
+	for (i = n-1; i >= 0; --i) {
+		b[c[a[i]]-1] = a[i];
+		c[a[i]] -= 1;
+	}
+
+	for (i = 0; i < n; ++i)
+		a[i] = b[i];
+
+	free(b);
+	free(c);
 }
 
 
@@ -471,6 +499,12 @@ int main(char *argv[], int argc)
 	printf("radix sort:    ");
 	radix_sort(a, n);
 	print_array(a, n);
+
+	memcpy(a, b, sizeof(b));
+	printf("counting sort: ");
+	counting_sort(a, n);
+	print_array(a, n);
+
 
 	return 0;
 }
