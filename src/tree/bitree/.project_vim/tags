@@ -1,0 +1,144 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.9~svn20110310	//
+Array	/home/tgni/workspace/alg/src/tree/bitree/queue.c	/^	ElementType *Array;$/;"	m	struct:QueueRecord	file:	access:public
+BOOLEAN	/home/tgni/workspace/alg/src/tree/bitree/types.h	/^typedef unsigned char		BOOLEAN;$/;"	t
+BUF	/home/tgni/workspace/alg/src/tree/bitree/tree.c	/^static char BUF[1024] = {0};$/;"	v	file:
+BUF_POS	/home/tgni/workspace/alg/src/tree/bitree/tree.c	/^static int32_t BUF_POS = 0;$/;"	v	file:
+BiTNode	/home/tgni/workspace/alg/src/tree/bitree/tree.h	/^typedef struct BiTNode {$/;"	s
+BiTNode	/home/tgni/workspace/alg/src/tree/bitree/tree.h	/^} BiTNode, *BiTree;$/;"	t	typeref:struct:BiTNode
+BiTNode::data	/home/tgni/workspace/alg/src/tree/bitree/tree.h	/^	TElemType data;$/;"	m	struct:BiTNode	access:public
+BiTNode::depth	/home/tgni/workspace/alg/src/tree/bitree/tree.h	/^	int depth, dist;$/;"	m	struct:BiTNode	access:public
+BiTNode::dist	/home/tgni/workspace/alg/src/tree/bitree/tree.h	/^	int depth, dist;$/;"	m	struct:BiTNode	access:public
+BiTNode::lchild	/home/tgni/workspace/alg/src/tree/bitree/tree.h	/^	struct BiTNode *lchild, *rchild;$/;"	m	struct:BiTNode	typeref:struct:BiTNode::BiTNode	access:public
+BiTNode::rchild	/home/tgni/workspace/alg/src/tree/bitree/tree.h	/^	struct BiTNode *lchild, *rchild;$/;"	m	struct:BiTNode	typeref:struct:BiTNode::	access:public
+BiTree	/home/tgni/workspace/alg/src/tree/bitree/tree.h	/^} BiTNode, *BiTree;$/;"	t	typeref:struct:BiTNode
+Capacity	/home/tgni/workspace/alg/src/tree/bitree/queue.c	/^	int Capacity;$/;"	m	struct:QueueRecord	file:	access:public
+ComputeDistAndDepth	/home/tgni/workspace/alg/src/tree/bitree/tree.c	/^void ComputeDistAndDepth(BiTree T)$/;"	f	signature:(BiTree T)
+ComputeWidth	/home/tgni/workspace/alg/src/tree/bitree/tree.c	/^static inline int32_t ComputeWidth(int32_t X)$/;"	f	file:	signature:(int32_t X)
+Create	/home/tgni/workspace/alg/src/tree/bitree/tree.c	/^BiTree Create(TElemType A[], int nr)$/;"	f	signature:(TElemType A[], int nr)
+CreateQueue	/home/tgni/workspace/alg/src/tree/bitree/queue.c	/^Queue CreateQueue( int MaxElements )$/;"	f	signature:( int MaxElements )
+CreateStack	/home/tgni/workspace/alg/src/tree/bitree/stack.c	/^Stack CreateStack( void )$/;"	f	signature:( void )
+DEPTH	/home/tgni/workspace/alg/src/tree/bitree/tree.c	/^static int32_t DEPTH = 0;$/;"	v	file:
+DISABLE	/home/tgni/workspace/alg/src/tree/bitree/types.h	58;"	d
+DISPLAY_MSG	/home/tgni/workspace/alg/src/tree/bitree/types.h	56;"	d
+DIST	/home/tgni/workspace/alg/src/tree/bitree/tree.c	/^static int32_t DIST  = 0;$/;"	v	file:
+DIST_MAX	/home/tgni/workspace/alg/src/tree/bitree/tree.c	10;"	d	file:
+DeleteSubTree	/home/tgni/workspace/alg/src/tree/bitree/tree.c	/^void DeleteSubTree(BiTree T, TElemType x)$/;"	f	signature:(BiTree T, TElemType x)
+Dequeue	/home/tgni/workspace/alg/src/tree/bitree/queue.c	/^ElementType Dequeue( Queue Q )$/;"	f	signature:( Queue Q )
+Destroy	/home/tgni/workspace/alg/src/tree/bitree/tree.c	/^void Destroy(BiTree T)$/;"	f	signature:(BiTree T)
+DisposeQueue	/home/tgni/workspace/alg/src/tree/bitree/queue.c	/^void DisposeQueue( Queue Q )$/;"	f	signature:( Queue Q )
+DisposeStack	/home/tgni/workspace/alg/src/tree/bitree/stack.c	/^void DisposeStack( Stack S )$/;"	f	signature:( Stack S )
+DsonNodes	/home/tgni/workspace/alg/src/tree/bitree/tree.c	/^int DsonNodes(BiTree T)$/;"	f	signature:(BiTree T)
+ENABLE	/home/tgni/workspace/alg/src/tree/bitree/types.h	59;"	d
+ERROR	/home/tgni/workspace/alg/src/tree/bitree/types.h	84;"	d
+Element	/home/tgni/workspace/alg/src/tree/bitree/stack.c	/^	ElementType Element;$/;"	m	struct:Node	file:	access:public
+ElementType	/home/tgni/workspace/alg/src/tree/bitree/queue.h	/^typedef void * ElementType;$/;"	t
+ElementType	/home/tgni/workspace/alg/src/tree/bitree/stack.h	/^typedef void * ElementType;$/;"	t
+Enqueue	/home/tgni/workspace/alg/src/tree/bitree/queue.c	/^void Enqueue( ElementType X, Queue Q )$/;"	f	signature:( ElementType X, Queue Q )
+Error	/home/tgni/workspace/alg/src/tree/bitree/fatal.h	4;"	d
+FALSE	/home/tgni/workspace/alg/src/tree/bitree/types.h	76;"	d
+FP32	/home/tgni/workspace/alg/src/tree/bitree/types.h	/^typedef float			FP32;$/;"	t
+FP64	/home/tgni/workspace/alg/src/tree/bitree/types.h	/^typedef double			FP64;$/;"	t
+FatalError	/home/tgni/workspace/alg/src/tree/bitree/fatal.h	5;"	d
+Front	/home/tgni/workspace/alg/src/tree/bitree/queue.c	/^	int Front;$/;"	m	struct:QueueRecord	file:	access:public
+Front	/home/tgni/workspace/alg/src/tree/bitree/queue.c	/^ElementType Front( Queue Q )$/;"	f	signature:( Queue Q )
+GetHeight	/home/tgni/workspace/alg/src/tree/bitree/tree.c	/^int32_t GetHeight(BiTree T)$/;"	f	signature:(BiTree T)
+INT16S	/home/tgni/workspace/alg/src/tree/bitree/types.h	/^typedef signed short		INT16S;$/;"	t
+INT16U	/home/tgni/workspace/alg/src/tree/bitree/types.h	/^typedef unsigned short		INT16U;$/;"	t
+INT32S	/home/tgni/workspace/alg/src/tree/bitree/types.h	/^typedef signed int		INT32S;$/;"	t
+INT32U	/home/tgni/workspace/alg/src/tree/bitree/types.h	/^typedef unsigned int		INT32U;$/;"	t
+INT64S	/home/tgni/workspace/alg/src/tree/bitree/types.h	/^typedef long long		INT64S;$/;"	t
+INT64U	/home/tgni/workspace/alg/src/tree/bitree/types.h	/^typedef unsigned long long	INT64U;$/;"	t
+INT8S	/home/tgni/workspace/alg/src/tree/bitree/types.h	/^typedef signed char		INT8S;$/;"	t
+INT8U	/home/tgni/workspace/alg/src/tree/bitree/types.h	/^typedef unsigned char		INT8U;$/;"	t
+InOrder	/home/tgni/workspace/alg/src/tree/bitree/tree.c	/^int32_t InOrder(BiTree T)$/;"	f	signature:(BiTree T)
+Insert	/home/tgni/workspace/alg/src/tree/bitree/tree.c	/^BiTree Insert(BiTree T, TElemType x)$/;"	f	signature:(BiTree T, TElemType x)
+IsComplete	/home/tgni/workspace/alg/src/tree/bitree/tree.c	/^int IsComplete(BiTree T)$/;"	f	signature:(BiTree T)
+IsEmpty	/home/tgni/workspace/alg/src/tree/bitree/stack.c	/^int IsEmpty( Stack S )$/;"	f	signature:( Stack S )
+IsEmptyQ	/home/tgni/workspace/alg/src/tree/bitree/queue.c	/^int IsEmptyQ( Queue Q )$/;"	f	signature:( Queue Q )
+IsFull	/home/tgni/workspace/alg/src/tree/bitree/queue.c	/^int IsFull( Queue Q )$/;"	f	signature:( Queue Q )
+LevelOrder	/home/tgni/workspace/alg/src/tree/bitree/tree.c	/^void LevelOrder(BiTree T)$/;"	f	signature:(BiTree T)
+ListLeaves	/home/tgni/workspace/alg/src/tree/bitree/tree.c	/^void ListLeaves(BiTree T, BiTree list)$/;"	f	signature:(BiTree T, BiTree list)
+MAX	/home/tgni/workspace/alg/src/tree/bitree/types.h	61;"	d
+MIN	/home/tgni/workspace/alg/src/tree/bitree/types.h	62;"	d
+MakeEmpty	/home/tgni/workspace/alg/src/tree/bitree/queue.c	/^void MakeEmpty( Queue Q )$/;"	f	signature:( Queue Q )
+MakeEmpty	/home/tgni/workspace/alg/src/tree/bitree/stack.c	/^void MakeEmpty( Stack S )$/;"	f	signature:( Stack S )
+MaxTreeElement	/home/tgni/workspace/alg/src/tree/bitree/tree.c	9;"	d	file:
+MinQueueSize	/home/tgni/workspace/alg/src/tree/bitree/queue.c	5;"	d	file:
+NR_DEPTH_MAX	/home/tgni/workspace/alg/src/tree/bitree/tree.c	74;"	d	file:
+NULL	/home/tgni/workspace/alg/src/tree/bitree/types.h	68;"	d
+Next	/home/tgni/workspace/alg/src/tree/bitree/stack.c	/^	PtrToNode   Next;$/;"	m	struct:Node	file:	access:public
+Node	/home/tgni/workspace/alg/src/tree/bitree/stack.c	/^struct Node$/;"	s	file:
+Node::Element	/home/tgni/workspace/alg/src/tree/bitree/stack.c	/^	ElementType Element;$/;"	m	struct:Node	file:	access:public
+Node::Next	/home/tgni/workspace/alg/src/tree/bitree/stack.c	/^	PtrToNode   Next;$/;"	m	struct:Node	file:	access:public
+OK	/home/tgni/workspace/alg/src/tree/bitree/types.h	80;"	d
+Pop	/home/tgni/workspace/alg/src/tree/bitree/stack.c	/^ElementType Pop( Stack S )$/;"	f	signature:( Stack S )
+PostOrder	/home/tgni/workspace/alg/src/tree/bitree/tree.c	/^void PostOrder(BiTree T)$/;"	f	signature:(BiTree T)
+Pre2Post	/home/tgni/workspace/alg/src/tree/bitree/tree.c	/^void Pre2Post(TElemType pre[], int l1, int h1, TElemType post[], int l2, int h2)$/;"	f	signature:(TElemType pre[], int l1, int h1, TElemType post[], int l2, int h2)
+PreInCreat	/home/tgni/workspace/alg/src/tree/bitree/tree.c	/^BiTree PreInCreat(TElemType A[], TElemType B[], int l1, int h1, int l2, int h2)$/;"	f	signature:(TElemType A[], TElemType B[], int l1, int h1, int l2, int h2)
+PreOrder	/home/tgni/workspace/alg/src/tree/bitree/tree.c	/^void PreOrder(BiTree T)$/;"	f	signature:(BiTree T)
+PreOrderK	/home/tgni/workspace/alg/src/tree/bitree/tree.c	/^TElemType PreOrderK(BiTree T, int k)$/;"	f	signature:(BiTree T, int k)
+PrintDir	/home/tgni/workspace/alg/src/tree/bitree/tree.c	/^void PrintDir(BiTree T)$/;"	f	signature:(BiTree T)
+PrintLeaves	/home/tgni/workspace/alg/src/tree/bitree/tree.c	/^void PrintLeaves(BiTree list)$/;"	f	signature:(BiTree list)
+PrintNode	/home/tgni/workspace/alg/src/tree/bitree/tree.c	/^void PrintNode(BiTree T)$/;"	f	signature:(BiTree T)
+PrintTree	/home/tgni/workspace/alg/src/tree/bitree/tree.c	/^void PrintTree(BiTree T)$/;"	f	signature:(BiTree T)
+PtrToNode	/home/tgni/workspace/alg/src/tree/bitree/stack.h	/^typedef struct Node *PtrToNode;$/;"	t	typeref:struct:Node
+Push	/home/tgni/workspace/alg/src/tree/bitree/stack.c	/^void Push( ElementType X, Stack S )$/;"	f	signature:( ElementType X, Stack S )
+Queue	/home/tgni/workspace/alg/src/tree/bitree/queue.h	/^typedef struct QueueRecord *Queue;$/;"	t	typeref:struct:QueueRecord
+QueueRecord	/home/tgni/workspace/alg/src/tree/bitree/queue.c	/^struct QueueRecord {$/;"	s	file:
+QueueRecord::Array	/home/tgni/workspace/alg/src/tree/bitree/queue.c	/^	ElementType *Array;$/;"	m	struct:QueueRecord	file:	access:public
+QueueRecord::Capacity	/home/tgni/workspace/alg/src/tree/bitree/queue.c	/^	int Capacity;$/;"	m	struct:QueueRecord	file:	access:public
+QueueRecord::Front	/home/tgni/workspace/alg/src/tree/bitree/queue.c	/^	int Front;$/;"	m	struct:QueueRecord	file:	access:public
+QueueRecord::Rear	/home/tgni/workspace/alg/src/tree/bitree/queue.c	/^	int Rear;$/;"	m	struct:QueueRecord	file:	access:public
+QueueRecord::Size	/home/tgni/workspace/alg/src/tree/bitree/queue.c	/^	int Size;$/;"	m	struct:QueueRecord	file:	access:public
+Rear	/home/tgni/workspace/alg/src/tree/bitree/queue.c	/^	int Rear;$/;"	m	struct:QueueRecord	file:	access:public
+ReverseLevelOrder	/home/tgni/workspace/alg/src/tree/bitree/tree.c	/^void ReverseLevelOrder(BiTree T)$/;"	f	signature:(BiTree T)
+SearchAncestor	/home/tgni/workspace/alg/src/tree/bitree/tree.c	/^void SearchAncestor(BiTree T, TElemType x)$/;"	f	signature:(BiTree T, TElemType x)
+Similar	/home/tgni/workspace/alg/src/tree/bitree/tree.c	/^int Similar(BiTree A, BiTree B)$/;"	f	signature:(BiTree A, BiTree B)
+Size	/home/tgni/workspace/alg/src/tree/bitree/queue.c	/^	int Size;$/;"	m	struct:QueueRecord	file:	access:public
+Stack	/home/tgni/workspace/alg/src/tree/bitree/stack.h	/^typedef PtrToNode Stack;$/;"	t
+Succ	/home/tgni/workspace/alg/src/tree/bitree/queue.c	/^static int Succ( int Value, Queue Q )$/;"	f	file:	signature:( int Value, Queue Q )
+Swap	/home/tgni/workspace/alg/src/tree/bitree/tree.c	/^void Swap(BiTree T)$/;"	f	signature:(BiTree T)
+TElemType	/home/tgni/workspace/alg/src/tree/bitree/types.h	/^typedef int			TElemType;$/;"	t
+TRUE	/home/tgni/workspace/alg/src/tree/bitree/types.h	72;"	d
+Top	/home/tgni/workspace/alg/src/tree/bitree/stack.c	/^ElementType Top( Stack S )$/;"	f	signature:( Stack S )
+US_SWAP	/home/tgni/workspace/alg/src/tree/bitree/types.h	63;"	d
+VisitFn	/home/tgni/workspace/alg/src/tree/bitree/tree.h	/^typedef int32_t (*VisitFn)(void *p);$/;"	t
+WIDTH	/home/tgni/workspace/alg/src/tree/bitree/tree.c	/^static int32_t WIDTH = 0;$/;"	v	file:
+_Queue_h	/home/tgni/workspace/alg/src/tree/bitree/queue.h	2;"	d
+_Stack_h_	/home/tgni/workspace/alg/src/tree/bitree/stack.h	2;"	d
+_TYPES_H	/home/tgni/workspace/alg/src/tree/bitree/types.h	11;"	d
+__LAST	/home/tgni/workspace/alg/src/tree/bitree/tree.c	/^static int __LAST[NR_DEPTH_MAX] = {0};$/;"	v	file:
+__TREE_H__	/home/tgni/workspace/alg/src/tree/bitree/tree.h	2;"	d
+__isr__	/home/tgni/workspace/alg/src/tree/bitree/types.h	51;"	d
+__plc_wq__	/home/tgni/workspace/alg/src/tree/bitree/types.h	52;"	d
+__tmr__	/home/tgni/workspace/alg/src/tree/bitree/types.h	53;"	d
+data	/home/tgni/workspace/alg/src/tree/bitree/tree.h	/^	TElemType data;$/;"	m	struct:BiTNode	access:public
+depth	/home/tgni/workspace/alg/src/tree/bitree/tree.h	/^	int depth, dist;$/;"	m	struct:BiTNode	access:public
+dist	/home/tgni/workspace/alg/src/tree/bitree/tree.h	/^	int depth, dist;$/;"	m	struct:BiTNode	access:public
+htonl	/home/tgni/workspace/alg/src/tree/bitree/types.h	42;"	d
+htons	/home/tgni/workspace/alg/src/tree/bitree/types.h	41;"	d
+int16_t	/home/tgni/workspace/alg/src/tree/bitree/types.h	/^typedef short			int16_t;$/;"	t
+int32_t	/home/tgni/workspace/alg/src/tree/bitree/types.h	/^typedef int			int32_t;$/;"	t
+int8_t	/home/tgni/workspace/alg/src/tree/bitree/types.h	/^typedef signed char		int8_t;$/;"	t
+lchild	/home/tgni/workspace/alg/src/tree/bitree/tree.h	/^	struct BiTNode *lchild, *rchild;$/;"	m	struct:BiTNode	typeref:struct:BiTNode::BiTNode	access:public
+long_t	/home/tgni/workspace/alg/src/tree/bitree/types.h	/^typedef long			long_t;$/;"	t
+main	/home/tgni/workspace/alg/src/tree/bitree/tree.c	/^int main(void)$/;"	f	signature:(void)
+mod_ceiling	/home/tgni/workspace/alg/src/tree/bitree/types.h	64;"	d
+mod_floor	/home/tgni/workspace/alg/src/tree/bitree/types.h	65;"	d
+ntohl	/home/tgni/workspace/alg/src/tree/bitree/types.h	48;"	d
+ntohs	/home/tgni/workspace/alg/src/tree/bitree/types.h	47;"	d
+rchild	/home/tgni/workspace/alg/src/tree/bitree/tree.h	/^	struct BiTNode *lchild, *rchild;$/;"	m	struct:BiTNode	typeref:struct:BiTNode::	access:public
+split_read_four	/home/tgni/workspace/alg/src/tree/bitree/types.h	134;"	d
+split_read_two	/home/tgni/workspace/alg/src/tree/bitree/types.h	105;"	d
+split_write_four	/home/tgni/workspace/alg/src/tree/bitree/types.h	/^static __inline__ void split_write_four(uint8_t *addr, uint32_t four, uint8_t endian)$/;"	f	signature:(uint8_t *addr, uint32_t four, uint8_t endian)
+split_write_two	/home/tgni/workspace/alg/src/tree/bitree/types.h	/^static __inline__ void split_write_two(uint8_t *addr, uint16_t two, uint8_t endian)$/;"	f	signature:(uint8_t *addr, uint16_t two, uint8_t endian)
+swap	/home/tgni/workspace/alg/src/tree/bitree/types.h	139;"	d
+uint16_t	/home/tgni/workspace/alg/src/tree/bitree/types.h	/^typedef unsigned short		uint16_t;$/;"	t
+uint32_t	/home/tgni/workspace/alg/src/tree/bitree/types.h	/^typedef unsigned int		uint32_t;$/;"	t
+uint8_t	/home/tgni/workspace/alg/src/tree/bitree/types.h	/^typedef unsigned char		uint8_t;$/;"	t
+ulong_t	/home/tgni/workspace/alg/src/tree/bitree/types.h	/^typedef unsigned long		ulong_t;$/;"	t

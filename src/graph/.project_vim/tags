@@ -1,0 +1,321 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.9~svn20110310	//
+ALGraph	/home/tgni/workspace/alg/src/graph/adj2matrix.c	/^} ALGraph;$/;"	t	typeref:struct:__anon2	file:
+AdjList	/home/tgni/workspace/alg/src/graph/adj2matrix.c	/^} VNode, AdjList[MaxVertexNum];$/;"	t	typeref:struct:VNode	file:
+ArcNode	/home/tgni/workspace/alg/src/graph/adj2matrix.c	/^typedef struct ArcNode {$/;"	s	file:
+ArcNode	/home/tgni/workspace/alg/src/graph/adj2matrix.c	/^} ArcNode;$/;"	t	typeref:struct:ArcNode	file:
+ArcNode::adjvex	/home/tgni/workspace/alg/src/graph/adj2matrix.c	/^	int adjvex;$/;"	m	struct:ArcNode	file:	access:public
+ArcNode::next	/home/tgni/workspace/alg/src/graph/adj2matrix.c	/^	struct ArcNode *next;$/;"	m	struct:ArcNode	typeref:struct:ArcNode::ArcNode	file:	access:public
+Array	/home/tgni/workspace/alg/src/graph/queue.h	/^	ElementType *Array;$/;"	m	struct:QueueRecord	access:public
+BFS	/home/tgni/workspace/alg/src/graph/graph.c	/^void BFS(Graph g, int s)$/;"	f	signature:(Graph g, int s)
+BFSTraverse	/home/tgni/workspace/alg/src/graph/graph.c	/^void BFSTraverse(Graph g)$/;"	f	signature:(Graph g)
+BOOLEAN	/home/tgni/workspace/alg/src/graph/types.h	/^typedef unsigned char		BOOLEAN;$/;"	t
+Capacity	/home/tgni/workspace/alg/src/graph/binheap.h	/^        int Capacity;$/;"	m	struct:HeapStruct	access:public
+Capacity	/home/tgni/workspace/alg/src/graph/queue.h	/^	int Capacity;$/;"	m	struct:QueueRecord	access:public
+Counter	/home/tgni/workspace/alg/src/graph/articulation.c	/^int Counter;$/;"	v
+CreateDAG	/home/tgni/workspace/alg/src/graph/articulation.c	/^void CreateDAG(Graph &G,int n,int e)$/;"	f	signature:(Graph &G,int n,int e)
+CreateQueue	/home/tgni/workspace/alg/src/graph/queue.c	/^Queue CreateQueue( int MaxElements )$/;"	f	signature:( int MaxElements )
+CreateStack	/home/tgni/workspace/alg/src/graph/stack.c	/^Stack CreateStack( void )$/;"	f	signature:( void )
+DFS	/home/tgni/workspace/alg/src/graph/graph.c	/^void DFS(Graph g, int v)$/;"	f	signature:(Graph g, int v)
+DFSNoRC	/home/tgni/workspace/alg/src/graph/graph.c	/^void DFSNoRC(Graph g, int v)$/;"	f	signature:(Graph g, int v)
+DFSTraverse	/home/tgni/workspace/alg/src/graph/graph.c	/^void DFSTraverse(Graph g, int mode)$/;"	f	signature:(Graph g, int mode)
+DISABLE	/home/tgni/workspace/alg/src/graph/types.h	58;"	d
+DISPLAY_MSG	/home/tgni/workspace/alg/src/graph/types.h	56;"	d
+DeleteMin	/home/tgni/workspace/alg/src/graph/binheap.c	/^static HeapElemType DeleteMin( PriorityQueue H )$/;"	f	file:	signature:( PriorityQueue H )
+DeleteMin	/home/tgni/workspace/alg/src/graph/binheap.h	/^        HeapElemType (*DeleteMin)( PriorityQueue H );$/;"	m	struct:HeapStruct	access:public
+Dequeue	/home/tgni/workspace/alg/src/graph/queue.c	/^ElementType Dequeue( Queue Q )$/;"	f	signature:( Queue Q )
+Dequeue	/home/tgni/workspace/alg/src/graph/queue.h	/^	ElementType (*Dequeue)( Queue Q );$/;"	m	struct:QueueRecord	access:public
+Destroy	/home/tgni/workspace/alg/src/graph/binheap.c	/^void Destroy( PriorityQueue H )$/;"	f	signature:( PriorityQueue H )
+Dijkstra	/home/tgni/workspace/alg/src/graph/graph.c	/^void Dijkstra(struct graph *g, int32_t s)$/;"	f	signature:(struct graph *g, int32_t s)
+DisposeQueue	/home/tgni/workspace/alg/src/graph/queue.c	/^void DisposeQueue( Queue Q )$/;"	f	signature:( Queue Q )
+DisposeStack	/home/tgni/workspace/alg/src/graph/stack.c	/^void DisposeStack( Stack S )$/;"	f	signature:( Stack S )
+ENABLE	/home/tgni/workspace/alg/src/graph/types.h	59;"	d
+ERROR	/home/tgni/workspace/alg/src/graph/types.h	84;"	d
+Eage	/home/tgni/workspace/alg/src/graph/graph.c	/^} *Eage;$/;"	t	typeref:struct:eage	file:
+Ecmp	/home/tgni/workspace/alg/src/graph/binheap.c	/^static int Ecmp(HeapElemType *b, HeapElemType *s)$/;"	f	file:	signature:(HeapElemType *b, HeapElemType *s)
+Ecpy	/home/tgni/workspace/alg/src/graph/binheap.c	/^static void Ecpy(HeapElemType *d, HeapElemType *s)$/;"	f	file:	signature:(HeapElemType *d, HeapElemType *s)
+Edge	/home/tgni/workspace/alg/src/graph/adj2matrix.c	/^	EdgeType Edge[MaxVertexNum][MaxVertexNum];$/;"	m	struct:__anon1	file:	access:public
+EdgeNode	/home/tgni/workspace/alg/src/graph/articulation.c	/^typedef struct EdgeNode$/;"	s	file:
+EdgeNode	/home/tgni/workspace/alg/src/graph/articulation.c	/^}EdgeNode;$/;"	t	typeref:struct:EdgeNode	file:
+EdgeNode::adjVertex	/home/tgni/workspace/alg/src/graph/articulation.c	/^	int adjVertex;$/;"	m	struct:EdgeNode	file:	access:public
+EdgeNode::nextEdgeNode	/home/tgni/workspace/alg/src/graph/articulation.c	/^	EdgeNode *nextEdgeNode;$/;"	m	struct:EdgeNode	file:	access:public
+EdgeType	/home/tgni/workspace/alg/src/graph/adj2matrix.c	/^typedef int EdgeType;$/;"	t	file:
+Element	/home/tgni/workspace/alg/src/graph/stack.h	/^	ElementType Element;$/;"	m	struct:Node	access:public
+ElementType	/home/tgni/workspace/alg/src/graph/types.h	/^typedef int			ElementType;$/;"	t
+Elements	/home/tgni/workspace/alg/src/graph/binheap.h	/^        HeapElemType *Elements;$/;"	m	struct:HeapStruct	access:public
+Enqueue	/home/tgni/workspace/alg/src/graph/queue.c	/^void Enqueue( ElementType X, Queue Q )$/;"	f	signature:( ElementType X, Queue Q )
+Enqueue	/home/tgni/workspace/alg/src/graph/queue.h	/^	void (*Enqueue)( ElementType X, Queue Q );$/;"	m	struct:QueueRecord	access:public
+Error	/home/tgni/workspace/alg/src/graph/fatal.h	4;"	d
+FALSE	/home/tgni/workspace/alg/src/graph/types.h	76;"	d
+FP32	/home/tgni/workspace/alg/src/graph/types.h	/^typedef float			FP32;$/;"	t
+FP64	/home/tgni/workspace/alg/src/graph/types.h	/^typedef double			FP64;$/;"	t
+FatalError	/home/tgni/workspace/alg/src/graph/fatal.h	5;"	d
+FindArt	/home/tgni/workspace/alg/src/graph/articulation.c	/^void FindArt(Graph &G,char Vert) \/\/一次DFS搞定，复杂度O(V+E)，前序遍历后序遍历混合使用 $/;"	f	signature:(Graph &G,char Vert)
+FindMin	/home/tgni/workspace/alg/src/graph/binheap.c	/^static HeapElemType FindMin( PriorityQueue H )$/;"	f	file:	signature:( PriorityQueue H )
+FindMin	/home/tgni/workspace/alg/src/graph/binheap.h	/^        HeapElemType (*FindMin)( PriorityQueue H );$/;"	m	struct:HeapStruct	access:public
+Front	/home/tgni/workspace/alg/src/graph/queue.h	/^	int Front;$/;"	m	struct:QueueRecord	access:public
+Graph	/home/tgni/workspace/alg/src/graph/articulation.c	/^typedef struct Graph$/;"	s	file:
+Graph	/home/tgni/workspace/alg/src/graph/articulation.c	/^}Graph;$/;"	t	typeref:struct:Graph	file:
+Graph	/home/tgni/workspace/alg/src/graph/graph.c	/^} *Graph;$/;"	t	typeref:struct:graph	file:
+Graph::edge_num	/home/tgni/workspace/alg/src/graph/articulation.c	/^	int vertex_num,edge_num;$/;"	m	struct:Graph	file:	access:public
+Graph::verNode	/home/tgni/workspace/alg/src/graph/articulation.c	/^	VerNode verNode[MAX_VERTEX_NUM];$/;"	m	struct:Graph	file:	access:public
+Graph::vertex_num	/home/tgni/workspace/alg/src/graph/articulation.c	/^	int vertex_num,edge_num;$/;"	m	struct:Graph	file:	access:public
+HLIST_HEAD	/home/tgni/workspace/alg/src/graph/list.h	294;"	d
+HLIST_HEAD_INIT	/home/tgni/workspace/alg/src/graph/list.h	293;"	d
+HeapElemType	/home/tgni/workspace/alg/src/graph/binheap.h	/^typedef struct tbl_s HeapElemType;$/;"	t	typeref:struct:tbl_s
+HeapStruct	/home/tgni/workspace/alg/src/graph/binheap.h	/^typedef struct HeapStruct {$/;"	s
+HeapStruct	/home/tgni/workspace/alg/src/graph/binheap.h	/^} HeapStruct;$/;"	t	typeref:struct:HeapStruct
+HeapStruct::Capacity	/home/tgni/workspace/alg/src/graph/binheap.h	/^        int Capacity;$/;"	m	struct:HeapStruct	access:public
+HeapStruct::DeleteMin	/home/tgni/workspace/alg/src/graph/binheap.h	/^        HeapElemType (*DeleteMin)( PriorityQueue H );$/;"	m	struct:HeapStruct	access:public
+HeapStruct::Elements	/home/tgni/workspace/alg/src/graph/binheap.h	/^        HeapElemType *Elements;$/;"	m	struct:HeapStruct	access:public
+HeapStruct::FindMin	/home/tgni/workspace/alg/src/graph/binheap.h	/^        HeapElemType (*FindMin)( PriorityQueue H );$/;"	m	struct:HeapStruct	access:public
+HeapStruct::Insert	/home/tgni/workspace/alg/src/graph/binheap.h	/^        void (*Insert)( HeapElemType X, PriorityQueue H );$/;"	m	struct:HeapStruct	access:public
+HeapStruct::IsEmpty	/home/tgni/workspace/alg/src/graph/binheap.h	/^        int (*IsEmpty)( PriorityQueue H );$/;"	m	struct:HeapStruct	access:public
+HeapStruct::IsFull	/home/tgni/workspace/alg/src/graph/binheap.h	/^        int (*IsFull)( PriorityQueue H );$/;"	m	struct:HeapStruct	access:public
+HeapStruct::MakeEmpty	/home/tgni/workspace/alg/src/graph/binheap.h	/^        void (*MakeEmpty)( PriorityQueue H );$/;"	m	struct:HeapStruct	access:public
+HeapStruct::Size	/home/tgni/workspace/alg/src/graph/binheap.h	/^        int Size;$/;"	m	struct:HeapStruct	access:public
+INIT_HLIST_HEAD	/home/tgni/workspace/alg/src/graph/list.h	295;"	d
+INIT_HLIST_NODE	/home/tgni/workspace/alg/src/graph/list.h	/^static inline void INIT_HLIST_NODE(struct hlist_node *h)$/;"	f	signature:(struct hlist_node *h)
+INIT_LIST_HEAD	/home/tgni/workspace/alg/src/graph/list.h	26;"	d
+INT16S	/home/tgni/workspace/alg/src/graph/types.h	/^typedef signed short		INT16S;$/;"	t
+INT16U	/home/tgni/workspace/alg/src/graph/types.h	/^typedef unsigned short		INT16U;$/;"	t
+INT32S	/home/tgni/workspace/alg/src/graph/types.h	/^typedef signed int		INT32S;$/;"	t
+INT32U	/home/tgni/workspace/alg/src/graph/types.h	/^typedef unsigned int		INT32U;$/;"	t
+INT64S	/home/tgni/workspace/alg/src/graph/types.h	/^typedef long long		INT64S;                 $/;"	t
+INT64U	/home/tgni/workspace/alg/src/graph/types.h	/^typedef unsigned long long	INT64U;$/;"	t
+INT8S	/home/tgni/workspace/alg/src/graph/types.h	/^typedef signed char		INT8S;$/;"	t
+INT8U	/home/tgni/workspace/alg/src/graph/types.h	/^typedef unsigned char		INT8U;$/;"	t
+Infinity	/home/tgni/workspace/alg/src/graph/graph.c	11;"	d	file:
+Init_Globalpara	/home/tgni/workspace/alg/src/graph/articulation.c	/^void Init_Globalpara(void)$/;"	f	signature:(void)
+Initialize	/home/tgni/workspace/alg/src/graph/binheap.c	/^PriorityQueue Initialize( int MaxElements )$/;"	f	signature:( int MaxElements )
+Insert	/home/tgni/workspace/alg/src/graph/binheap.c	/^static void Insert( HeapElemType X, PriorityQueue H )$/;"	f	file:	signature:( HeapElemType X, PriorityQueue H )
+Insert	/home/tgni/workspace/alg/src/graph/binheap.h	/^        void (*Insert)( HeapElemType X, PriorityQueue H );$/;"	m	struct:HeapStruct	access:public
+IsEmpty	/home/tgni/workspace/alg/src/graph/binheap.c	/^static int IsEmpty( PriorityQueue H )$/;"	f	file:	signature:( PriorityQueue H )
+IsEmpty	/home/tgni/workspace/alg/src/graph/binheap.h	/^        int (*IsEmpty)( PriorityQueue H );$/;"	m	struct:HeapStruct	access:public
+IsEmpty	/home/tgni/workspace/alg/src/graph/queue.c	/^int IsEmpty( Queue Q )$/;"	f	signature:( Queue Q )
+IsEmpty	/home/tgni/workspace/alg/src/graph/queue.h	/^	int (*IsEmpty)( Queue Q );$/;"	m	struct:QueueRecord	access:public
+IsFull	/home/tgni/workspace/alg/src/graph/binheap.c	/^static int IsFull( PriorityQueue H )$/;"	f	file:	signature:( PriorityQueue H )
+IsFull	/home/tgni/workspace/alg/src/graph/binheap.h	/^        int (*IsFull)( PriorityQueue H );$/;"	m	struct:HeapStruct	access:public
+IsFull	/home/tgni/workspace/alg/src/graph/queue.c	/^int IsFull( Queue Q )$/;"	f	signature:( Queue Q )
+IsFull	/home/tgni/workspace/alg/src/graph/queue.h	/^	int (*IsFull)( Queue Q );$/;"	m	struct:QueueRecord	access:public
+KEY	/home/tgni/workspace/alg/src/graph/graph.c	10;"	d	file:
+LIST_HEAD	/home/tgni/workspace/alg/src/graph/list.h	23;"	d
+LIST_HEAD_INIT	/home/tgni/workspace/alg/src/graph/list.h	21;"	d
+Low	/home/tgni/workspace/alg/src/graph/articulation.c	/^int Low[MAX_VERTEX_NUM]; \/\/记录从当前顶点通过树边跟一条背向边能达到的最低顶点编号 $/;"	v
+MAX	/home/tgni/workspace/alg/src/graph/types.h	61;"	d
+MAX_VERTEX_NUM	/home/tgni/workspace/alg/src/graph/articulation.c	9;"	d	file:
+MGraph	/home/tgni/workspace/alg/src/graph/adj2matrix.c	/^} MGraph;$/;"	t	typeref:struct:__anon1	file:
+MIN	/home/tgni/workspace/alg/src/graph/types.h	62;"	d
+MakeEmpty	/home/tgni/workspace/alg/src/graph/binheap.c	/^static void MakeEmpty( PriorityQueue H )$/;"	f	file:	signature:( PriorityQueue H )
+MakeEmpty	/home/tgni/workspace/alg/src/graph/binheap.h	/^        void (*MakeEmpty)( PriorityQueue H );$/;"	m	struct:HeapStruct	access:public
+MakeEmpty	/home/tgni/workspace/alg/src/graph/queue.c	/^void MakeEmpty( Queue Q )$/;"	f	signature:( Queue Q )
+MakeEmpty	/home/tgni/workspace/alg/src/graph/stack.c	/^void MakeEmpty( Stack S )$/;"	f	signature:( Stack S )
+MaxVertexNum	/home/tgni/workspace/alg/src/graph/adj2matrix.c	1;"	d	file:
+MinData	/home/tgni/workspace/alg/src/graph/binheap.c	6;"	d	file:
+MinPQSize	/home/tgni/workspace/alg/src/graph/binheap.c	5;"	d	file:
+MinQueueSize	/home/tgni/workspace/alg/src/graph/queue.c	5;"	d	file:
+NONRC_MODE	/home/tgni/workspace/alg/src/graph/graph.c	297;"	d	file:
+NULL	/home/tgni/workspace/alg/src/graph/types.h	68;"	d
+Next	/home/tgni/workspace/alg/src/graph/stack.h	/^	PtrToNode   Next;$/;"	m	struct:Node	access:public
+Node	/home/tgni/workspace/alg/src/graph/stack.h	/^struct Node {$/;"	s
+Node::Element	/home/tgni/workspace/alg/src/graph/stack.h	/^	ElementType Element;$/;"	m	struct:Node	access:public
+Node::Next	/home/tgni/workspace/alg/src/graph/stack.h	/^	PtrToNode   Next;$/;"	m	struct:Node	access:public
+NotAVertex	/home/tgni/workspace/alg/src/graph/graph.c	12;"	d	file:
+Num	/home/tgni/workspace/alg/src/graph/articulation.c	/^int Num[MAX_VERTEX_NUM];$/;"	v
+OK	/home/tgni/workspace/alg/src/graph/types.h	80;"	d
+Parent	/home/tgni/workspace/alg/src/graph/articulation.c	/^int Parent[MAX_VERTEX_NUM];$/;"	v
+Pop	/home/tgni/workspace/alg/src/graph/stack.c	/^ElementType Pop( Stack S )$/;"	f	signature:( Stack S )
+Prim	/home/tgni/workspace/alg/src/graph/graph.c	/^void Prim(struct graph *g, int32_t s)$/;"	f	signature:(struct graph *g, int32_t s)
+PriorityQueue	/home/tgni/workspace/alg/src/graph/binheap.h	/^typedef struct HeapStruct *PriorityQueue;$/;"	t	typeref:struct:HeapStruct
+PtrToNode	/home/tgni/workspace/alg/src/graph/stack.h	/^typedef struct Node *PtrToNode;$/;"	t	typeref:struct:Node
+Push	/home/tgni/workspace/alg/src/graph/stack.c	/^void Push( ElementType X, Stack S )$/;"	f	signature:( ElementType X, Stack S )
+Queue	/home/tgni/workspace/alg/src/graph/queue.h	/^typedef struct QueueRecord *Queue;$/;"	t	typeref:struct:QueueRecord
+QueueRecord	/home/tgni/workspace/alg/src/graph/queue.h	/^struct QueueRecord {$/;"	s
+QueueRecord::Array	/home/tgni/workspace/alg/src/graph/queue.h	/^	ElementType *Array;$/;"	m	struct:QueueRecord	access:public
+QueueRecord::Capacity	/home/tgni/workspace/alg/src/graph/queue.h	/^	int Capacity;$/;"	m	struct:QueueRecord	access:public
+QueueRecord::Dequeue	/home/tgni/workspace/alg/src/graph/queue.h	/^	ElementType (*Dequeue)( Queue Q );$/;"	m	struct:QueueRecord	access:public
+QueueRecord::Enqueue	/home/tgni/workspace/alg/src/graph/queue.h	/^	void (*Enqueue)( ElementType X, Queue Q );$/;"	m	struct:QueueRecord	access:public
+QueueRecord::Front	/home/tgni/workspace/alg/src/graph/queue.h	/^	int Front;$/;"	m	struct:QueueRecord	access:public
+QueueRecord::IsEmpty	/home/tgni/workspace/alg/src/graph/queue.h	/^	int (*IsEmpty)( Queue Q );$/;"	m	struct:QueueRecord	access:public
+QueueRecord::IsFull	/home/tgni/workspace/alg/src/graph/queue.h	/^	int (*IsFull)( Queue Q );$/;"	m	struct:QueueRecord	access:public
+QueueRecord::Rear	/home/tgni/workspace/alg/src/graph/queue.h	/^	int Rear;$/;"	m	struct:QueueRecord	access:public
+QueueRecord::Size	/home/tgni/workspace/alg/src/graph/queue.h	/^	int Size;$/;"	m	struct:QueueRecord	access:public
+RC_MODE	/home/tgni/workspace/alg/src/graph/graph.c	296;"	d	file:
+Rear	/home/tgni/workspace/alg/src/graph/queue.h	/^	int Rear;$/;"	m	struct:QueueRecord	access:public
+Record	/home/tgni/workspace/alg/src/graph/graph.c	/^} *Record;$/;"	t	typeref:struct:record	file:
+Size	/home/tgni/workspace/alg/src/graph/binheap.h	/^        int Size;$/;"	m	struct:HeapStruct	access:public
+Size	/home/tgni/workspace/alg/src/graph/queue.h	/^	int Size;$/;"	m	struct:QueueRecord	access:public
+Stack	/home/tgni/workspace/alg/src/graph/stack.h	/^typedef PtrToNode Stack;$/;"	t
+StackIsEmpty	/home/tgni/workspace/alg/src/graph/stack.c	/^int StackIsEmpty( Stack S )$/;"	f	signature:( Stack S )
+Succ	/home/tgni/workspace/alg/src/graph/queue.c	/^static int Succ( int Value, Queue Q )$/;"	f	file:	signature:( int Value, Queue Q )
+TRUE	/home/tgni/workspace/alg/src/graph/types.h	72;"	d
+Top	/home/tgni/workspace/alg/src/graph/stack.c	/^ElementType Top( Stack S )$/;"	f	signature:( Stack S )
+US_SWAP	/home/tgni/workspace/alg/src/graph/types.h	63;"	d
+VNode	/home/tgni/workspace/alg/src/graph/adj2matrix.c	/^typedef struct VNode {$/;"	s	file:
+VNode	/home/tgni/workspace/alg/src/graph/adj2matrix.c	/^} VNode, AdjList[MaxVertexNum];$/;"	t	typeref:struct:VNode	file:
+VNode::data	/home/tgni/workspace/alg/src/graph/adj2matrix.c	/^	VertexType data;$/;"	m	struct:VNode	file:	access:public
+VNode::first	/home/tgni/workspace/alg/src/graph/adj2matrix.c	/^	ArcNode *first;$/;"	m	struct:VNode	file:	access:public
+VerNode	/home/tgni/workspace/alg/src/graph/articulation.c	/^typedef struct VerNode$/;"	s	file:
+VerNode	/home/tgni/workspace/alg/src/graph/articulation.c	/^}VerNode;$/;"	t	typeref:struct:VerNode	file:
+VerNode::data	/home/tgni/workspace/alg/src/graph/articulation.c	/^	int data;$/;"	m	struct:VerNode	file:	access:public
+VerNode::firstedge	/home/tgni/workspace/alg/src/graph/articulation.c	/^	EdgeNode *firstedge;$/;"	m	struct:VerNode	file:	access:public
+VertexType	/home/tgni/workspace/alg/src/graph/adj2matrix.c	/^typedef char VertexType;$/;"	t	file:
+Vex	/home/tgni/workspace/alg/src/graph/adj2matrix.c	/^	VertexType Vex[MaxVertexNum];$/;"	m	struct:__anon1	file:	access:public
+Visit	/home/tgni/workspace/alg/src/graph/articulation.c	/^int Visit[MAX_VERTEX_NUM]; \/\/标记是否被访问过 $/;"	v
+_BinHeap_H	/home/tgni/workspace/alg/src/graph/binheap.h	2;"	d
+_LIST_H	/home/tgni/workspace/alg/src/graph/list.h	2;"	d
+_Queue_h	/home/tgni/workspace/alg/src/graph/queue.h	2;"	d
+_Stack_h_	/home/tgni/workspace/alg/src/graph/stack.h	2;"	d
+_TYPES_H	/home/tgni/workspace/alg/src/graph/types.h	11;"	d
+__anon1::Edge	/home/tgni/workspace/alg/src/graph/adj2matrix.c	/^	EdgeType Edge[MaxVertexNum][MaxVertexNum];$/;"	m	struct:__anon1	file:	access:public
+__anon1::Vex	/home/tgni/workspace/alg/src/graph/adj2matrix.c	/^	VertexType Vex[MaxVertexNum];$/;"	m	struct:__anon1	file:	access:public
+__anon1::arcnum	/home/tgni/workspace/alg/src/graph/adj2matrix.c	/^	int vexnum, arcnum;$/;"	m	struct:__anon1	file:	access:public
+__anon1::vexnum	/home/tgni/workspace/alg/src/graph/adj2matrix.c	/^	int vexnum, arcnum;$/;"	m	struct:__anon1	file:	access:public
+__anon2::arcnum	/home/tgni/workspace/alg/src/graph/adj2matrix.c	/^	int vexnum, arcnum;$/;"	m	struct:__anon2	file:	access:public
+__anon2::vertices	/home/tgni/workspace/alg/src/graph/adj2matrix.c	/^	AdjList vertices;$/;"	m	struct:__anon2	file:	access:public
+__anon2::vexnum	/home/tgni/workspace/alg/src/graph/adj2matrix.c	/^	int vexnum, arcnum;$/;"	m	struct:__anon2	file:	access:public
+__ghn_wq__	/home/tgni/workspace/alg/src/graph/types.h	52;"	d
+__hlist_del	/home/tgni/workspace/alg/src/graph/list.h	/^static inline void __hlist_del(struct hlist_node *n)$/;"	f	signature:(struct hlist_node *n)
+__isr__	/home/tgni/workspace/alg/src/graph/types.h	51;"	d
+__list_add	/home/tgni/workspace/alg/src/graph/list.h	/^static __inline__ void __list_add(struct list_head * _new,$/;"	f	signature:(struct list_head * _new, struct list_head * _prev, struct list_head * _next)
+__list_add	/home/tgni/workspace/alg/src/graph/list.h	48;"	d
+__list_del	/home/tgni/workspace/alg/src/graph/list.h	/^static __inline__ void __list_del(struct list_head * _prev,$/;"	f	signature:(struct list_head * _prev, struct list_head * _next)
+__list_del	/home/tgni/workspace/alg/src/graph/list.h	116;"	d
+__tmr__	/home/tgni/workspace/alg/src/graph/types.h	53;"	d
+add_eage	/home/tgni/workspace/alg/src/graph/graph.c	/^struct eage *add_eage(struct graph *g, int32_t u, int32_t v, uint32_t weight) $/;"	f	signature:(struct graph *g, int32_t u, int32_t v, uint32_t weight)
+adj2matrix	/home/tgni/workspace/alg/src/graph/adj2matrix.c	/^void adj2matrix(ALGraph *A, MGraph *M)$/;"	f	signature:(ALGraph *A, MGraph *M)
+adjVertex	/home/tgni/workspace/alg/src/graph/articulation.c	/^	int adjVertex;$/;"	m	struct:EdgeNode	file:	access:public
+adjvex	/home/tgni/workspace/alg/src/graph/adj2matrix.c	/^	int adjvex;$/;"	m	struct:ArcNode	file:	access:public
+arcnum	/home/tgni/workspace/alg/src/graph/adj2matrix.c	/^	int vexnum, arcnum;$/;"	m	struct:__anon1	file:	access:public
+arcnum	/home/tgni/workspace/alg/src/graph/adj2matrix.c	/^	int vexnum, arcnum;$/;"	m	struct:__anon2	file:	access:public
+container_of	/home/tgni/workspace/alg/src/graph/list.h	214;"	d
+create_graph	/home/tgni/workspace/alg/src/graph/graph.c	/^struct graph *create_graph(int32_t vertex_num, int32_t eage_num)$/;"	f	signature:(int32_t vertex_num, int32_t eage_num)
+create_indegree	/home/tgni/workspace/alg/src/graph/graph.c	/^int32_t create_indegree(struct graph *g)$/;"	f	signature:(struct graph *g)
+data	/home/tgni/workspace/alg/src/graph/adj2matrix.c	/^	VertexType data;$/;"	m	struct:VNode	file:	access:public
+data	/home/tgni/workspace/alg/src/graph/articulation.c	/^	int data;$/;"	m	struct:VerNode	file:	access:public
+destroy_graph	/home/tgni/workspace/alg/src/graph/graph.c	/^void destroy_graph(struct graph *g)$/;"	f	signature:(struct graph *g)
+dv	/home/tgni/workspace/alg/src/graph/binheap.h	/^        int dv;$/;"	m	struct:tbl_s	access:public
+dv	/home/tgni/workspace/alg/src/graph/graph.c	/^        int32_t dv;$/;"	m	struct:record	file:	access:public
+eage	/home/tgni/workspace/alg/src/graph/graph.c	/^typedef struct eage {$/;"	s	file:
+eage::left	/home/tgni/workspace/alg/src/graph/graph.c	/^        int32_t left;$/;"	m	struct:eage	file:	access:public
+eage::node	/home/tgni/workspace/alg/src/graph/graph.c	/^        list_head_t node;$/;"	m	struct:eage	file:	access:public
+eage::right	/home/tgni/workspace/alg/src/graph/graph.c	/^        int32_t right;$/;"	m	struct:eage	file:	access:public
+eage::weight	/home/tgni/workspace/alg/src/graph/graph.c	/^        uint32_t weight;$/;"	m	struct:eage	file:	access:public
+eages	/home/tgni/workspace/alg/src/graph/graph.c	/^        int32_t eages;$/;"	m	struct:graph	file:	access:public
+edge_num	/home/tgni/workspace/alg/src/graph/articulation.c	/^	int vertex_num,edge_num;$/;"	m	struct:Graph	file:	access:public
+first	/home/tgni/workspace/alg/src/graph/adj2matrix.c	/^	ArcNode *first;$/;"	m	struct:VNode	file:	access:public
+first	/home/tgni/workspace/alg/src/graph/list.h	/^	struct hlist_node *first;$/;"	m	struct:hlist_head	typeref:struct:hlist_head::hlist_node	access:public
+firstedge	/home/tgni/workspace/alg/src/graph/articulation.c	/^	EdgeNode *firstedge;$/;"	m	struct:VerNode	file:	access:public
+graph	/home/tgni/workspace/alg/src/graph/graph.c	/^typedef struct graph {$/;"	s	file:
+graph::eages	/home/tgni/workspace/alg/src/graph/graph.c	/^        int32_t eages;$/;"	m	struct:graph	file:	access:public
+graph::indegree	/home/tgni/workspace/alg/src/graph/graph.c	/^        int32_t *indegree;$/;"	m	struct:graph	file:	access:public
+graph::list	/home/tgni/workspace/alg/src/graph/graph.c	/^        list_head_t *list;$/;"	m	struct:graph	file:	access:public
+graph::record	/home/tgni/workspace/alg/src/graph/graph.c	/^        struct record *record;$/;"	m	struct:graph	typeref:struct:graph::record	file:	access:public
+graph::vertices	/home/tgni/workspace/alg/src/graph/graph.c	/^        int32_t vertices;$/;"	m	struct:graph	file:	access:public
+graph_test	/home/tgni/workspace/alg/src/graph/graph.c	/^int32_t graph_test(void)$/;"	f	signature:(void)
+hlist_add_after	/home/tgni/workspace/alg/src/graph/list.h	/^static inline void hlist_add_after(struct hlist_node *n,$/;"	f	signature:(struct hlist_node *n, struct hlist_node *next)
+hlist_add_before	/home/tgni/workspace/alg/src/graph/list.h	/^static inline void hlist_add_before(struct hlist_node *n,$/;"	f	signature:(struct hlist_node *n, struct hlist_node *next)
+hlist_add_head	/home/tgni/workspace/alg/src/graph/list.h	/^static inline void hlist_add_head(struct hlist_node *n, struct hlist_head *h)$/;"	f	signature:(struct hlist_node *n, struct hlist_head *h)
+hlist_del	/home/tgni/workspace/alg/src/graph/list.h	/^static inline void hlist_del(struct hlist_node *n)$/;"	f	signature:(struct hlist_node *n)
+hlist_del_init	/home/tgni/workspace/alg/src/graph/list.h	/^static inline void hlist_del_init(struct hlist_node *n)$/;"	f	signature:(struct hlist_node *n)
+hlist_empty	/home/tgni/workspace/alg/src/graph/list.h	/^static inline int hlist_empty(const struct hlist_head *h)$/;"	f	signature:(const struct hlist_head *h)
+hlist_entry	/home/tgni/workspace/alg/src/graph/list.h	380;"	d
+hlist_for_each	/home/tgni/workspace/alg/src/graph/list.h	383;"	d
+hlist_for_each_entry	/home/tgni/workspace/alg/src/graph/list.h	397;"	d
+hlist_for_each_entry_continue	/home/tgni/workspace/alg/src/graph/list.h	409;"	d
+hlist_for_each_entry_from	/home/tgni/workspace/alg/src/graph/list.h	421;"	d
+hlist_for_each_entry_safe	/home/tgni/workspace/alg/src/graph/list.h	434;"	d
+hlist_for_each_safe	/home/tgni/workspace/alg/src/graph/list.h	386;"	d
+hlist_head	/home/tgni/workspace/alg/src/graph/list.h	/^struct hlist_head {$/;"	s
+hlist_head::first	/home/tgni/workspace/alg/src/graph/list.h	/^	struct hlist_node *first;$/;"	m	struct:hlist_head	typeref:struct:hlist_head::hlist_node	access:public
+hlist_move_list	/home/tgni/workspace/alg/src/graph/list.h	/^static inline void hlist_move_list(struct hlist_head *old,$/;"	f	signature:(struct hlist_head *old, struct hlist_head *new)
+hlist_node	/home/tgni/workspace/alg/src/graph/list.h	/^struct hlist_node {$/;"	s
+hlist_node::next	/home/tgni/workspace/alg/src/graph/list.h	/^	struct hlist_node *next, **pprev;$/;"	m	struct:hlist_node	typeref:struct:hlist_node::hlist_node	access:public
+hlist_node::pprev	/home/tgni/workspace/alg/src/graph/list.h	/^	struct hlist_node *next, **pprev;$/;"	m	struct:hlist_node	typeref:struct:hlist_node::	access:public
+hlist_unhashed	/home/tgni/workspace/alg/src/graph/list.h	/^static inline int hlist_unhashed(const struct hlist_node *h)$/;"	f	signature:(const struct hlist_node *h)
+htonl	/home/tgni/workspace/alg/src/graph/types.h	42;"	d
+htons	/home/tgni/workspace/alg/src/graph/types.h	41;"	d
+indegree	/home/tgni/workspace/alg/src/graph/graph.c	/^        int32_t *indegree;$/;"	m	struct:graph	file:	access:public
+int16_t	/home/tgni/workspace/alg/src/graph/types.h	/^typedef short			int16_t;$/;"	t
+int32_t	/home/tgni/workspace/alg/src/graph/types.h	/^typedef int			int32_t;$/;"	t
+int8_t	/home/tgni/workspace/alg/src/graph/types.h	/^typedef signed char		int8_t;$/;"	t
+isArt	/home/tgni/workspace/alg/src/graph/articulation.c	/^int isArt[MAX_VERTEX_NUM]; \/\/用于标记是否已经被输出为割点了 $/;"	v
+known	/home/tgni/workspace/alg/src/graph/graph.c	/^        int32_t known;$/;"	m	struct:record	file:	access:public
+left	/home/tgni/workspace/alg/src/graph/graph.c	/^        int32_t left;$/;"	m	struct:eage	file:	access:public
+list	/home/tgni/workspace/alg/src/graph/graph.c	/^        list_head_t *list;$/;"	m	struct:graph	file:	access:public
+list_add	/home/tgni/workspace/alg/src/graph/list.h	/^static __inline__ void list_add(struct list_head *_new, struct list_head *_head)$/;"	f	signature:(struct list_head *_new, struct list_head *_head)
+list_add	/home/tgni/workspace/alg/src/graph/list.h	75;"	d
+list_add_tail	/home/tgni/workspace/alg/src/graph/list.h	/^static __inline__ void list_add_tail(struct list_head *_new, struct list_head *_head)$/;"	f	signature:(struct list_head *_new, struct list_head *_head)
+list_add_tail	/home/tgni/workspace/alg/src/graph/list.h	95;"	d
+list_del	/home/tgni/workspace/alg/src/graph/list.h	/^static __inline__ void list_del(struct list_head *_entry)$/;"	f	signature:(struct list_head *_entry)
+list_del	/home/tgni/workspace/alg/src/graph/list.h	138;"	d
+list_del_init	/home/tgni/workspace/alg/src/graph/list.h	/^static __inline__ void list_del_init(struct list_head *_entry)$/;"	f	signature:(struct list_head *_entry)
+list_del_init	/home/tgni/workspace/alg/src/graph/list.h	156;"	d
+list_empty	/home/tgni/workspace/alg/src/graph/list.h	/^static __inline__ int list_empty(struct list_head *_head)$/;"	f	signature:(struct list_head *_head)
+list_empty	/home/tgni/workspace/alg/src/graph/list.h	173;"	d
+list_empty_one	/home/tgni/workspace/alg/src/graph/list.h	/^static __inline__ int list_empty_one(struct list_head *_head)$/;"	f	signature:(struct list_head *_head)
+list_entry	/home/tgni/workspace/alg/src/graph/list.h	224;"	d
+list_for_each	/home/tgni/workspace/alg/src/graph/list.h	233;"	d
+list_for_each_entry	/home/tgni/workspace/alg/src/graph/list.h	262;"	d
+list_for_each_entry_reverse	/home/tgni/workspace/alg/src/graph/list.h	273;"	d
+list_for_each_reverse	/home/tgni/workspace/alg/src/graph/list.h	237;"	d
+list_for_each_safe	/home/tgni/workspace/alg/src/graph/list.h	248;"	d
+list_for_each_safe_reverse	/home/tgni/workspace/alg/src/graph/list.h	252;"	d
+list_head	/home/tgni/workspace/alg/src/graph/list.h	/^struct list_head {$/;"	s
+list_head::next	/home/tgni/workspace/alg/src/graph/list.h	/^	struct list_head *next, *prev;$/;"	m	struct:list_head	typeref:struct:list_head::list_head	access:public
+list_head::prev	/home/tgni/workspace/alg/src/graph/list.h	/^	struct list_head *next, *prev;$/;"	m	struct:list_head	typeref:struct:list_head::	access:public
+list_head_t	/home/tgni/workspace/alg/src/graph/list.h	/^typedef struct list_head list_head_t;$/;"	t	typeref:struct:list_head
+list_splice	/home/tgni/workspace/alg/src/graph/list.h	/^static __inline__ void list_splice(struct list_head *list, struct list_head *head)$/;"	f	signature:(struct list_head *list, struct list_head *head)
+long_t	/home/tgni/workspace/alg/src/graph/types.h	/^typedef long			long_t;$/;"	t
+main	/home/tgni/workspace/alg/src/graph/graph.c	/^int32_t main(void)$/;"	f	signature:(void)
+mod_ceiling	/home/tgni/workspace/alg/src/graph/types.h	64;"	d
+mod_floor	/home/tgni/workspace/alg/src/graph/types.h	65;"	d
+next	/home/tgni/workspace/alg/src/graph/adj2matrix.c	/^	struct ArcNode *next;$/;"	m	struct:ArcNode	typeref:struct:ArcNode::ArcNode	file:	access:public
+next	/home/tgni/workspace/alg/src/graph/list.h	/^	struct hlist_node *next, **pprev;$/;"	m	struct:hlist_node	typeref:struct:hlist_node::hlist_node	access:public
+next	/home/tgni/workspace/alg/src/graph/list.h	/^	struct list_head *next, *prev;$/;"	m	struct:list_head	typeref:struct:list_head::list_head	access:public
+nextEdgeNode	/home/tgni/workspace/alg/src/graph/articulation.c	/^	EdgeNode *nextEdgeNode;$/;"	m	struct:EdgeNode	file:	access:public
+node	/home/tgni/workspace/alg/src/graph/graph.c	/^        list_head_t node;$/;"	m	struct:eage	file:	access:public
+ntohl	/home/tgni/workspace/alg/src/graph/types.h	48;"	d
+ntohs	/home/tgni/workspace/alg/src/graph/types.h	47;"	d
+offsetof	/home/tgni/workspace/alg/src/graph/list.h	205;"	d
+pprev	/home/tgni/workspace/alg/src/graph/list.h	/^	struct hlist_node *next, **pprev;$/;"	m	struct:hlist_node	typeref:struct:hlist_node::	access:public
+prev	/home/tgni/workspace/alg/src/graph/list.h	/^	struct list_head *next, *prev;$/;"	m	struct:list_head	typeref:struct:list_head::	access:public
+print_path	/home/tgni/workspace/alg/src/graph/graph.c	/^void print_path(int32_t v, struct graph *g)$/;"	f	signature:(int32_t v, struct graph *g)
+pv	/home/tgni/workspace/alg/src/graph/graph.c	/^        int32_t pv;$/;"	m	struct:record	file:	access:public
+query_eage	/home/tgni/workspace/alg/src/graph/graph.c	/^struct eage *query_eage(struct graph *g, int32_t u, int32_t v)$/;"	f	signature:(struct graph *g, int32_t u, int32_t v)
+record	/home/tgni/workspace/alg/src/graph/graph.c	/^        struct record *record;$/;"	m	struct:graph	typeref:struct:graph::record	file:	access:public
+record	/home/tgni/workspace/alg/src/graph/graph.c	/^typedef struct record {$/;"	s	file:
+record::dv	/home/tgni/workspace/alg/src/graph/graph.c	/^        int32_t dv;$/;"	m	struct:record	file:	access:public
+record::known	/home/tgni/workspace/alg/src/graph/graph.c	/^        int32_t known;$/;"	m	struct:record	file:	access:public
+record::pv	/home/tgni/workspace/alg/src/graph/graph.c	/^        int32_t pv;$/;"	m	struct:record	file:	access:public
+remove_eage	/home/tgni/workspace/alg/src/graph/graph.c	/^int32_t remove_eage(struct graph *g, int32_t u, int32_t v)$/;"	f	signature:(struct graph *g, int32_t u, int32_t v)
+right	/home/tgni/workspace/alg/src/graph/graph.c	/^        int32_t right;$/;"	m	struct:eage	file:	access:public
+show_graph	/home/tgni/workspace/alg/src/graph/graph.c	/^void show_graph(struct graph *g)$/;"	f	signature:(struct graph *g)
+split_read_four	/home/tgni/workspace/alg/src/graph/types.h	134;"	d
+split_read_two	/home/tgni/workspace/alg/src/graph/types.h	105;"	d
+split_write_four	/home/tgni/workspace/alg/src/graph/types.h	/^static __inline__ void split_write_four(uint8_t *addr, uint32_t four, uint8_t endian)$/;"	f	signature:(uint8_t *addr, uint32_t four, uint8_t endian)
+split_write_two	/home/tgni/workspace/alg/src/graph/types.h	/^static __inline__ void split_write_two(uint8_t *addr, uint16_t two, uint8_t endian)$/;"	f	signature:(uint8_t *addr, uint16_t two, uint8_t endian)
+std	/home/tgni/workspace/alg/src/graph/articulation.c	/^using namespace std;$/;"	v
+tbl_s	/home/tgni/workspace/alg/src/graph/binheap.h	/^struct tbl_s {$/;"	s
+tbl_s::dv	/home/tgni/workspace/alg/src/graph/binheap.h	/^        int dv;$/;"	m	struct:tbl_s	access:public
+tbl_s::v	/home/tgni/workspace/alg/src/graph/binheap.h	/^        int v;$/;"	m	struct:tbl_s	access:public
+top_sort	/home/tgni/workspace/alg/src/graph/graph.c	/^void top_sort(struct graph *g)$/;"	f	signature:(struct graph *g)
+uint16_t	/home/tgni/workspace/alg/src/graph/types.h	/^typedef unsigned short		uint16_t;$/;"	t
+uint32_t	/home/tgni/workspace/alg/src/graph/types.h	/^typedef unsigned int		uint32_t;$/;"	t
+uint8_t	/home/tgni/workspace/alg/src/graph/types.h	/^typedef unsigned char		uint8_t;$/;"	t
+ulong_t	/home/tgni/workspace/alg/src/graph/types.h	/^typedef unsigned long		ulong_t;$/;"	t
+undirected_graph_test	/home/tgni/workspace/alg/src/graph/graph.c	/^int32_t undirected_graph_test(void)$/;"	f	signature:(void)
+unweighted_test	/home/tgni/workspace/alg/src/graph/graph.c	/^int32_t unweighted_test(void)$/;"	f	signature:(void)
+v	/home/tgni/workspace/alg/src/graph/binheap.h	/^        int v;$/;"	m	struct:tbl_s	access:public
+verNode	/home/tgni/workspace/alg/src/graph/articulation.c	/^	VerNode verNode[MAX_VERTEX_NUM];$/;"	m	struct:Graph	file:	access:public
+vertex_num	/home/tgni/workspace/alg/src/graph/articulation.c	/^	int vertex_num,edge_num;$/;"	m	struct:Graph	file:	access:public
+vertices	/home/tgni/workspace/alg/src/graph/adj2matrix.c	/^	AdjList vertices;$/;"	m	struct:__anon2	file:	access:public
+vertices	/home/tgni/workspace/alg/src/graph/graph.c	/^        int32_t vertices;$/;"	m	struct:graph	file:	access:public
+vexnum	/home/tgni/workspace/alg/src/graph/adj2matrix.c	/^	int vexnum, arcnum;$/;"	m	struct:__anon1	file:	access:public
+vexnum	/home/tgni/workspace/alg/src/graph/adj2matrix.c	/^	int vexnum, arcnum;$/;"	m	struct:__anon2	file:	access:public
+weight	/home/tgni/workspace/alg/src/graph/graph.c	/^        uint32_t weight;$/;"	m	struct:eage	file:	access:public
+weighted_test	/home/tgni/workspace/alg/src/graph/graph.c	/^int32_t weighted_test(void)$/;"	f	signature:(void)
