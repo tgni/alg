@@ -1,4 +1,4 @@
-all: median.o
+all: palindromic.o
 	gcc $< -o test
 
 clean:
