@@ -1,0 +1,182 @@
+cscope 15 $HOME/Workspace/private/alg/ky/stack -q 0000000022 0000000784
+	@/home/tgni/Workspace/private/alg/ky/stack/matchParentheses.cc
+
+1 
+	~<c¡dio
+>
+
+2 
+	~<¡ack
+>
+
+4 
+usšg
+ 
+Çme¥aû
+ 
+	g¡d
+;
+
+6 
+	sCHAR
+ {
+
+7 
+	mc
+;
+
+8 
+	midx
+;
+
+9 } 
+	tCHAR_T
+;
+
+11 
+	g¡ack
+<
+	gCHAR_T
+> 
+	gS
+;
+
+12 
+	g¡r
+[110];
+
+13 
+	gªs
+[110];
+
+15 
+	$maš
+()
+
+17 
+	`sÿnf
+("%s", 
+¡r
+è!ð
+EOF
+) {
+
+18 
+i
+;
+
+19 
+i
+ = 0; 
+¡r
+[i] != '\0'; ++i) {
+
+20 ià(
+¡r
+[
+i
+] == '(') {
+
+21 
+S
+.
+	`push
+(
+¡r
+[
+i
+]);
+
+22 
+ªs
+[
+i
+] = ' ';
+
+23 } ià(
+¡r
+[
+i
+] == ')') {
+
+24 ià(
+S
+.
+	`em±y
+(è=ð
+çl£
+) {
+
+25 
+S
+.
+	`pÝ
+();
+
+26 
+ªs
+[
+i
+] = ' ';
+
+28 
+ªs
+[
+i
+] = '?';
+
+31 
+ªs
+[
+i
+] = ' ';
+
+34 !
+S
+.
+	`em±y
+()) {
+
+35 
+ªs
+[
+S
+.
+	`tÝ
+()] = '$';
+
+36 
+S
+.
+	`pÝ
+();
+
+39 
+ªs
+[
+i
+] = 0;
+
+40 
+	`puts
+(
+¡r
+);
+
+41 
+	`puts
+(
+ªs
+);
+
+45 
+	}
+}
+
+	@
+1
+.
+0
+1
+62
+/home/tgni/Workspace/private/alg/ky/stack/matchParentheses.cc
