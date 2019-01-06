@@ -16,7 +16,7 @@ typedef struct eage {
         int32_t right;
         uint32_t weight;
         list_head_t node;
-} *Eage;
+} *Edge;
 
 typedef struct record {
         int32_t known;
@@ -206,7 +206,7 @@ void unweighted(struct graph *g, int32_t s)
 void BFS(Graph g, int s)
 {	
 	Queue q;
-	Eage e;
+	Edge e;
 	int v;
 
 	printf("%d ", s);
@@ -250,7 +250,7 @@ void BFSTraverse(Graph g)
 
 void DFS(Graph g, int v)
 {
-	Eage e;
+	Edge e;
 
 	printf("%d ", v);	
 	g->record[KEY(v)].known = TRUE;
@@ -267,7 +267,7 @@ void DFS(Graph g, int v)
 void DFSNoRC(Graph g, int v)
 {
 	Stack s;
-	Eage e;
+	Edge e;
 	int k;
 
 	s = CreateStack();
