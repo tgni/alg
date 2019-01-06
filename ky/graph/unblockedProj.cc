@@ -45,6 +45,7 @@ int main(void)
 		
 		int ans = 0;
 		for (int i = 1; i <= n; ++i) {
+			printf("%d -> %d\n", i, Tree[i]);
 			if (Tree[i] == -1) ans++;
 		}
 		printf("%d\n", ans-1);	//minus 1 means rest of edge should be added.
