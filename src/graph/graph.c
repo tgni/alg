@@ -11,7 +11,7 @@
 #define Infinity    (0xFFFF)
 #define NotAVertex  (-1)
 
-typedef struct eage {
+typedef struct edge {
         int32_t left;
         int32_t right;
         uint32_t weight;
@@ -26,13 +26,13 @@ typedef struct record {
 
 typedef struct graph {
         int32_t vertices;
-        int32_t eages;
+        int32_t edges;
         int32_t *indegree;
         struct record *record;
         list_head_t *list;
 } *Graph;
 
-struct graph *create_graph(int32_t vertex_num, int32_t eage_num)
+struct graph *create_graph(int32_t vertex_num, int32_t edge_num)
 {
         struct graph *g; 
         uint32_t i;
@@ -54,7 +54,7 @@ struct graph *create_graph(int32_t vertex_num, int32_t eage_num)
                 g->record[i].pv = NotAVertex;
         }
 
-        g->eages = eage_num;
+        g->edges = edge_num;
         g->vertices = vertex_num;
 
         return g;
@@ -71,7 +71,7 @@ void destroy_graph(struct graph *g)
 
 void show_graph(struct graph *g)
 {
-        struct eage *e;
+        struct edge *e;
         int32_t i;
 
         for (i = 0; i < g->vertices; i++) {
@@ -83,9 +83,9 @@ void show_graph(struct graph *g)
         }
 }
 
-struct eage *query_eage(struct graph *g, int32_t u, int32_t v)
+struct edge *query_edge(struct graph *g, int32_t u, int32_t v)
 {
-        struct eage *e;
+        struct edge *e;
 
         list_for_each_entry(e, &g->list[KEY(u)], node) {
                 if ((e->left == u) && (e->right == v))
@@ -94,14 +94,14 @@ struct eage *query_eage(struct graph *g, int32_t u, int32_t v)
         return NULL;
 }
 /*
- * add_eage - add eage (u,v) into graph g.
+ * add_edge - add edge (u,v) into graph g.
  */
-struct eage *add_eage(struct graph *g, int32_t u, int32_t v, uint32_t weight) 
+struct edge *add_edge(struct graph *g, int32_t u, int32_t v, uint32_t weight) 
 {
-        struct eage *e;
+        struct edge *e;
         int32_t key;
 
-        e = (struct eage *)malloc(sizeof(struct eage));
+        e = (struct edge *)malloc(sizeof(struct edge));
 
         e->left = u;
         e->right = v;
@@ -113,10 +113,10 @@ struct eage *add_eage(struct graph *g, int32_t u, int32_t v, uint32_t weight)
         return e;
 }
 
-int32_t remove_eage(struct graph *g, int32_t u, int32_t v)
+int32_t remove_edge(struct graph *g, int32_t u, int32_t v)
 {
-        struct eage *e;
-        e = query_eage(g, u, v);
+        struct edge *e;
+        e = query_edge(g, u, v);
         if (!e)
                 return ERROR;
 
@@ -127,7 +127,7 @@ int32_t remove_eage(struct graph *g, int32_t u, int32_t v)
 
 int32_t create_indegree(struct graph *g)
 {
-        struct eage *e;
+        struct edge *e;
         int32_t i;
 
         memset(g->indegree, 0, sizeof(int32_t) * g->vertices);
@@ -142,7 +142,7 @@ int32_t create_indegree(struct graph *g)
 void top_sort(struct graph *g)
 {
         Queue q;
-        struct eage *e;
+        struct edge *e;
         //int32_t top_num[10];
         int32_t counter = 0, v;
 
@@ -173,7 +173,7 @@ void unweighted(struct graph *g, int32_t s)
 {
         Queue q;
         struct QueueOps *op;
-        struct eage *e;
+        struct edge *e;
         struct record *r;
         struct list_head *h;
         int32_t key, v, w;
@@ -324,11 +324,11 @@ void Dijkstra(struct graph *g, int32_t s)
         int32_t v, w;  
         PriorityQueue q;
         struct tbl_s t;
-        struct eage *e;
+        struct edge *e;
         struct record *r;
 
         r = g->record;
-        q = Initialize(g->eages);
+        q = Initialize(g->edges);
         g->record[KEY(s)].dv = 0;
         t.v = s;
         t.dv = 0;
@@ -364,11 +364,11 @@ void Prim(struct graph *g, int32_t s)
         int32_t v, w;  
         PriorityQueue q;
         struct tbl_s t;
-        struct eage *e;
+        struct edge *e;
         struct record *r;
 
         r = g->record;
-        q = Initialize(g->eages);
+        q = Initialize(g->edges);
         g->record[KEY(s)].dv = 0;
         t.v = s;
         t.dv = 0;
@@ -423,7 +423,7 @@ int32_t graph_test(void)
 
         g = create_graph(7, 12);
         for (i = 0; i < 12; i++)
-                add_eage(g, e[i][0], e[i][1], 1);
+                add_edge(g, e[i][0], e[i][1], 1);
         show_graph(g);
 	BFSTraverse(g);
 	DFSTraverse(g, RC_MODE);
@@ -468,7 +468,7 @@ int32_t unweighted_test(void)
         int32_t i;
         g = create_graph(7, 12);
         for (i = 0; i < 12; i++)
-                add_eage(g, e[i][0], e[i][1], 1);
+                add_edge(g, e[i][0], e[i][1], 1);
         show_graph(g);
         //unweighted(g, 3);
         for (i = 0; i < g->vertices; i++) {
@@ -503,7 +503,7 @@ int32_t weighted_test(void)
 
         g = create_graph(7, 12);
         for (i = 0; i < 12; i++)
-                add_eage(g, e[i][0], e[i][1], e[i][2]);
+                add_edge(g, e[i][0], e[i][1], e[i][2]);
         show_graph(g);
         Dijkstra(g, 1);
         for (i = 0; i < g->vertices; i++) {
@@ -535,7 +535,7 @@ int32_t undirected_graph_test(void)
 
         g = create_graph(7, 24);
         for (i = 0; i < 24; i++)
-                add_eage(g, e[i][0], e[i][1], e[i][2]);
+                add_edge(g, e[i][0], e[i][1], e[i][2]);
         show_graph(g);
         Prim(g, 4);
         for (i = 0; i < g->vertices; i++) {
