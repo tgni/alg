@@ -1,6 +1,6 @@
-CCFLAGS = -W -Wall -I..
+CCFLAGS = -W -Wall -I.. #-lm
 # executable files for this directory
-OBJECTS = maze.exe cocacola.exe primeRing.exe oilDeposit.exe templeOfBone.exe
+OBJECTS = fib.exe wrongLetters.exe lds.exe lcs.exe
 # tells make to use the file "../GNU_makefile_template", which
 # defines general rules for making .o and .exe files
 include ../GNU_makefile_template
