@@ -37,7 +37,7 @@ int main(void)
 			int ansPow[30];		//factors' power
 
 			for (int j = 0; j < primeSize; ++j) {
-				if (number[i] % prime[i] == 0) {
+				if (number[i] % prime[j] == 0) {
 					ansPrime[ansSize] = prime[j]; 
 					ansPow[ansSize] = 0;
 					while (number[i] % prime[j] == 0) {
@@ -56,7 +56,7 @@ int main(void)
 
 			int ans = 1;
 			for (int j = 0; j < ansSize; ++j)
-				ans *= (ansPow[i]+1);
+				ans *= (ansPow[j]+1);
 			printf("%d\n", ans);
 
 		}
