@@ -1,7 +1,8 @@
 CCFLAGS = -W -Wall -I.. #-lm
 # executable files for this directory
 OBJECTS = sort.exe sort2.exe sort3.exe factoring.exe proxy.exe reverse.exe \
-	  keyBoard.exe primeFactor.exe divideInteger.exe sphere.exe
+	  keyBoard.exe primeFactor.exe divideInteger.exe sphere.exe buildTree.exe \
+	  buildTree2.exe 2012.exe
 
 # tells make to use the file "../GNU_makefile_template", which
 # defines general rules for making .o and .exe files
