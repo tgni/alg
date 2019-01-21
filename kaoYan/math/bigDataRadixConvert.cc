@@ -78,7 +78,7 @@ struct bigInteger {
 		ret.init();
 		int remainder = 0;
 		for (int i = size-1; i >= 0; --i) {
-			ret.digit[i] = (remainder*10000 + digit[i]) / x;
+			ret.digit[i] = (remainder*10000 + digit[i]) / x; /* higher digit remainder plus current digit divides x */
 			remainder = (remainder*10000 + digit[i]) % x;
 
 			if (ret.digit[i] != 0 && ret.size == 0)
