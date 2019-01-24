@@ -40,4 +40,6 @@ int main(void)
 		}
 		printf("%d\n", Matrix[1][n]);
 	}
+
+	return 0;
 }
