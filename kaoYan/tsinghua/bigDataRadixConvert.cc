@@ -7,18 +7,23 @@ struct bigInteger {
 	int digit[maxDigits];
 	int size;
 
-	void init(void) {
+	bigInteger() {
 		for (int i = 0; i < maxDigits; ++i)
 			digit[i] = 0;
 		size = 0;
 	}
 
-	void set(int x) {
-		init();
+	bigInteger &set(int x) {
+		for (int i = 0; i < maxDigits; ++i)
+			digit[i] = 0;
+		size = 0;
+
 		do {
 			digit[size++] = x % 10000;
 			x /= 10000;
 		} while (x != 0);
+
+		return *this;
 	}
 
 	void output(void) {
@@ -37,7 +42,7 @@ struct bigInteger {
 			ret.set(0);
 			return ret;
 		}
-		ret.init();
+
 		int carry = 0;
 		for (int i=0; i < size; ++i) {
 			int tmp = x*digit[i] + carry;
@@ -52,7 +57,6 @@ struct bigInteger {
 
 	bigInteger operator + (const bigInteger &A) const {
 		bigInteger ret;
-		ret.init();
 		int carry = 0;
 		for (int i = 0; i < A.size || i < size; ++i) {
 			int tmp = A.digit[i] + digit[i] + carry;
@@ -67,7 +71,6 @@ struct bigInteger {
 	
 	bigInteger operator / (int x) const {
 		bigInteger ret;
-		ret.init();
 		int remainder = 0;
 		for (int i = size-1; i >= 0; --i) {
 			ret.digit[i] = (remainder*10000 + digit[i]) / x; /* higher digit remainder plus current digit divides x */

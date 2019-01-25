@@ -14,14 +14,7 @@ struct bigInteger {
 		size = 0;
 	}
 
-	bigInteger(int x) {
-		for (int i = 0; i < maxDigits; ++i)
-			digit[i] = 0;
-		size = 0;
-		set(x);
-	}
-
-	void set(int x) {
+	bigInteger(int x) : bigInteger() {
 		do {
 			digit[size++] = x % 10000;
 			x /= 10000;
