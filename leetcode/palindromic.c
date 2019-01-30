@@ -2,7 +2,7 @@
 #include <string.h>
 #include <stdlib.h>
 
-#if 0
+#if 1
 /* brute-force */
 char* longestPalindrome(char* s) {
         int len = strlen(s);
@@ -38,6 +38,7 @@ char* longestPalindrome(char* s) {
 }
 #endif
 
+#if 0
 /* expanding center */
 char* longestPalindrome(char* s) {
         int len = strlen(s);
@@ -72,6 +73,7 @@ char* longestPalindrome(char* s) {
         
         return r;
 } 
+#endif
 
 int main(void)
 {

@@ -1,6 +1,8 @@
-all: palindromic.o
-	gcc $< -o test
+CCFLAGS = -W -Wall -I..
+# executable files for this directory
+OBJECTS = median.exe palindromic.exe string.exe
+# tells make to use the file "../GNU_makefile_template", which
+# defines general rules for making .o and .exe files
+include GNU_makefile_template
 
-clean:
-	rm *.o -rf
-
+$(OBJECTS) :
