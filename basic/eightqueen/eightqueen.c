@@ -33,7 +33,7 @@ static int CNT = 0;
 
 void search(int c[], int n, int k)
 {
-	int i, j;
+	int i;
 
 	if (k == n) {
 		++CNT;

@@ -1,5 +1,7 @@
 #include <stdio.h>
+#include <stdlib.h>
 #include "types.h"
+
 #if 0
 #define NR_MAX_FLOW	(1 << 9)
 /* type=3bit, dir=1bit, dtei=8bit, lid=8bit */
@@ -64,7 +66,7 @@ int main(int argc, char *argv[])
 	
 	if (argc != 2) {
 		printf("Usage: ./test <NR_STA>\n");
-		return;
+		return -1;
 	}
 
 	nr_tei = strtoul(argv[1], NULL, 0);	
@@ -75,5 +77,5 @@ int main(int argc, char *argv[])
 	for (i = 0; i < NR_HASH_MAX; ++i)
 		printf("index: %d count %d\n", i, statis[i]);
 
-	return;
+	return 0;
 }

@@ -7,14 +7,12 @@
  * History:
  *	Jan 26, 2015	tgni    Create
  */
-//#include "lightelf_acu_reg.h"
-//#include "ose_printf.h"
+
 #include <stdio.h>
 #include "crc.h"
 
 #define DATA_LEN	(1025)
 
-//int32_t test_data[DATA_LEN / 4] __attribute__((aligned(32)));
 int8_t test_data[DATA_LEN] __attribute__((aligned(32)));
 void crc_test(void)
 {
@@ -29,8 +27,6 @@ void crc_test(void)
 
 	test_data[DATA_LEN - 1] = 0x5a;
 
-	//crc_digest((uint8_t *)test_data, DATA_LEN, CRC_32 | CRC_HW, &out);	
-	//printf_d("hw:0x%08x\n", out);
 	out = 0;
 	crc_digest((uint8_t *)test_data, DATA_LEN, CRC_32 | CRC_SW, &out);	
 	printf("sw:0x%08x\n", out);

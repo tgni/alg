@@ -13,22 +13,21 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-int Fib(int f[], int n)
+void Fib(int f[], int n)
 {
 	int i;
 
-	if (n >= 1) {
-		f[0] = 1;	
-		f[1] = 1;
-	} else {
+	if (n == 1) {
 		f[0] = 1;
-		return;
+	} else if (n == 2) {
+		f[0] = 1; f[1] = 2;
 	}
 
 	for (i = 2; i < n; ++i) {
 		f[i] = f[i-1] + f[i-2];
 	}
-	return f[i];
+
+	return;
 }
 
 int fib_n(int n)

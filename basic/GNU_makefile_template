@@ -1,13 +1,14 @@
 #g++ compiler: options
 
 CC = gcc
-CCFLAGS = 
+CCP = g++
+#CCFLAGS =
 
 # Some programs include headers defined in earlier chapters
 # LOCFLAGS used to set tell the compiler where to find a
 # header that is not in the same directory as the source file itself
 # LOCFLAGS will be set in directory level makefiles as needed
-LOCFLAGS =
+#LOCFLAGS =
 
 ### 
 
@@ -26,7 +27,7 @@ LOCFLAGS =
 # This rule says that the make target named "all" depends on those
 # files.  Executing "make all" in a subdirectory will cause make
 # to build each .exe file listed in that subdirectory's makefile
-all: $(OBJECTS) 
+all: $(TARGET) $(TARGETEXE) 
 
 # rule that says how to make a .o object file from a .cc source file
 # for a given source file in a given directory you could compile it
@@ -35,18 +36,27 @@ all: $(OBJECTS)
 # $< and $@ are macros defined by make
 #     $< refers to the file being processed (i.e., compiled or linked)
 #     $@ refers to the generated file
-%.o: %.cc 
+%.o: %.c %.cc %.cpp
 	$(CC) $(CCFLAGS) $(LOCFLAGS) -c $< -o $@
 
 # rule that says how to make a .exe executable file from a .o object file
+ifeq ($(USECPP), 1)
+%.exe: %.o 
+	$(CCP) $(CCFLAGS) $(LOCFLAGS) $< -o $@
+else
 %.exe: %.o 
 	$(CC) $(CCFLAGS) $(LOCFLAGS) $< -o $@
+endif
+
+# TARGET default use gcc, g++ compile multiple files not implemented
+$(TARGET) : $(OBJS) 
+	$(CC) $(CCFLAGS) $(LOCFLAGS) $^ -o $@
 
 # target to clean up the object files and any core files
 # executing "make clean" in a subdirectory will remove all
 # files named core or any file ending in .o, or .stackdump
 clean:
-	rm -rf *.o *.exe core *.stackdump .project_vim
+	rm -rf *.o *.exe core *.stackdump .project_vim $(TARGET)
 
 # target to remove executable files as well as object and core files
 clobber: clean

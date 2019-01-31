@@ -3,9 +3,6 @@
 #include "fsm.h"
 #include<stdio.h>
 
-fsm_ent
-
-
 void abc(struct fsm_object *obj, int val,void **arg)
 {
 	// state -> default

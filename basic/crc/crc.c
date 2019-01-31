@@ -45,9 +45,8 @@ uint32_t crc_update(uint8_t *data, uint32_t size)
 }
 
 
-int32_t crc_digest_sw(uint8_t *data, uint32_t size, uint32_t mode, uint32_t *crc)
+int32_t crc_digest_sw(uint8_t *data, uint32_t size, uint32_t *crc)
 {
-	//assert_s((mode & CRC_LEN_MASK) == CRC_32);
 	*crc = crc_update(data, size) ^ 0xffffffff;
 	return OK;
 }
@@ -57,7 +56,7 @@ int32_t crc_digest(uint8_t *data, uint32_t size, uint32_t mode, uint32_t *crc)
 {
 	switch (mode & CRC_CAC_MASK) {
 	case CRC_SW:
-		return crc_digest_sw(data, size, mode & CRC_LEN_MASK, crc);
+		return crc_digest_sw(data, size, crc);
 	default:
 		//assert_s(FALSE);
 		return ERROR;

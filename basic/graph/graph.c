@@ -14,7 +14,7 @@
 typedef struct edge {
         int32_t left;
         int32_t right;
-        uint32_t weight;
+        int32_t weight;
         list_head_t node;
 } *Edge;
 
@@ -35,7 +35,7 @@ typedef struct graph {
 struct graph *create_graph(int32_t vertex_num, int32_t edge_num)
 {
         struct graph *g; 
-        uint32_t i;
+        int32_t i;
 
         g = (struct graph *)malloc(sizeof(struct graph));
 
@@ -96,7 +96,7 @@ struct edge *query_edge(struct graph *g, int32_t u, int32_t v)
 /*
  * add_edge - add edge (u,v) into graph g.
  */
-struct edge *add_edge(struct graph *g, int32_t u, int32_t v, uint32_t weight) 
+struct edge *add_edge(struct graph *g, int32_t u, int32_t v, int32_t weight) 
 {
         struct edge *e;
         int32_t key;
@@ -144,7 +144,8 @@ void top_sort(struct graph *g)
         Queue q;
         struct edge *e;
         //int32_t top_num[10];
-        int32_t counter = 0, v;
+        //int32_t counter = 0, v;
+        int32_t v;
 
         q = CreateQueue(g->vertices);
 
@@ -304,12 +305,13 @@ void DFSTraverse(Graph g, int mode)
 		g->record[KEY(i)].known = FALSE;
 
 	for (i = 1; i <= g->vertices; ++i) {
-		if (!g->record[KEY(i)].known)
+		if (!g->record[KEY(i)].known) {
 			if (mode) {
 				DFS(g, i);
 			} else {
 				DFSNoRC(g, i);
 			}
+		}
 	}
 	printf("\n");
 
@@ -436,7 +438,6 @@ int32_t graph_test(void)
 
 void print_path(int32_t v, struct graph *g)
 {
-        int32_t i;        
         if (g->record[KEY(v)].pv != NotAVertex) {
                 print_path(g->record[KEY(v)].pv, g); 
                 printf(" to ");

@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+
 long int Fib( int N )
 {
     printf("enter %s \n", __FUNCTION__);
@@ -11,6 +12,6 @@ long int Fib( int N )
 
 int main(void)
 {
-    printf("%d\r\n", Fib(10));
+    printf("%ld\r\n", Fib(10));
 }
 
