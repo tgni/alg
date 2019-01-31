@@ -50,3 +50,9 @@ int test_routing(void)
 
 	return 0;
 }
+
+int main()
+{
+	printf("rbtree testing comming soon!\n");
+	return 0;
+}

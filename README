@@ -1,9 +1,14 @@
 This project is for data structure and algorithm practising.
 Anybody can use it. Thx
 
-baisc directory includes some notable classic algorithm issues. IntroToAlg 
-and weiss dirs contain two known algorithm books, I am using them for 
-coding.
+Directory 'introToAlg' is the solution of <Introduction to Algorithm>.
 
-Directory kaoYan is for Master degree applying. It uses <王道计算机考研机试指南>
+Directory 'basic' includes some notable classic algorithm issues. IntroToAlg 
+and weiss dirs contain two known algorithm books, I am using them for coding.
+
+Directory 'kaoYan' is for Master degree applying. It uses <王道计算机考研机试指南>
 and tsinghua peking exams solutions included.
+
+Directory 'leetcode' is for summary of leetcode.
+
+Compiler: GCC/G++ on Linux Platform.

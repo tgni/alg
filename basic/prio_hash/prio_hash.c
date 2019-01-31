@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <stdlib.h>
 #include <string.h>
 #include "types.h"
 #include "prio_hash.h"
@@ -106,9 +107,9 @@ int main(int argc, char* argv[])
 
 	printf("\n");
 #endif
-	if (argc < 1) {
-		printf("usage: ./run num[int]");
-		return 0;
+	if (argc < 2) {
+		printf("usage: ./run num[int]\n");
+		return -1;
 	}
 
 	set_prio_hash(atoi(argv[1]), &hash);

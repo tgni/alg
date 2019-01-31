@@ -1,3 +1,4 @@
+#include <unistd.h>
 #include <pthread.h>
 #include <string.h>
 #include <stdlib.h>
@@ -35,7 +36,7 @@ int32_t os_timer_delete(ostimer_t *tmr)
 	return OK;
 }
 
-static void __inline__ os_timer_insert(ostimer_t *tmr)
+static __inline__ void os_timer_insert(ostimer_t *tmr)
 {
 	int32_t index;
 	index = tvec_index(&tvec, tmr->two[0].x);

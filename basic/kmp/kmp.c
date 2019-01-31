@@ -72,7 +72,7 @@ int main()
 	//char *pattern = "abababca";
 	char *pattern = "abaabcac";
 	char *s = "ababababca";
-	int pos, i, j, *next;
+	int pos, *next;
 
 	if (!(next = malloc(strlen(pattern)*sizeof(int)))) {
 		printf("failed to malloc\n");

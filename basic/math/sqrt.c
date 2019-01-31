@@ -3,28 +3,22 @@
 #include <math.h>
 #include <time.h>
 
-float bin_sqrt(float n)
-{
-	int i;
-
-	for (i = 0; i < n; i++)
-}
-
+/* TODO */
+#if 0
 float newton_sqrt(float n)
 {
-
+	return 0;
 }
+#endif
 
 int main(int argc, char *argv[])
 {
 	double n, s;
-	clock_t c;
 
 	n = atof(argv[1]);
 	s = sqrt(n);
 
-	printf("n: %f s: %f time: %d\n", 
-		n, s, clock());
+	printf("n: %f s: %f time: %ld\n", n, s, clock());
 
 	return 0;
 }

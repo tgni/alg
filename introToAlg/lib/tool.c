@@ -52,6 +52,3 @@ void print_array(char *prompt, int a[], int N)
 	}
 	printf("\n");
 }
-
-
-

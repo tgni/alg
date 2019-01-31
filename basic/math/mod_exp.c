@@ -18,7 +18,7 @@ int32_t mod_exp(uint32_t b, uint32_t exp, uint32_t m)
 
 	for (; exp; exp >>= 1) {
 		if (exp & 1)
-			x = (x * pow) % m;	
+			x = (x * pow) % m;
 		pow = (pow * pow) % m;
 	}
 

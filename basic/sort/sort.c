@@ -5,6 +5,8 @@
 #include "types.h"
 #include "list.h"
 
+#define swap(a, b)	do {int tmp = a; a = b; b = tmp;} while (0)
+
 typedef struct bucket_s {
 	list_head_t *list;	/* for each number i less than base, 
 				   storing data at list[i]. */
@@ -441,7 +443,7 @@ void counting_sort(int a[], int n)
 }
 
 
-int main(char *argv[], int argc)
+int main()
 {
 	int b[10];
 	int a[11];

@@ -12,7 +12,6 @@ int calc_time_slice(int prio)
 
 int main(void)
 {
-        int slice;
         int prio;
 
         for (prio = 0; prio < 64; ++prio) {
