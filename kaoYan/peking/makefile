@@ -7,7 +7,7 @@ OBJECTS = iWannaGoHomeFloyd.exe iWannaGoHomeDijkstra.exe potentialFriends.exe \
 	  permutation2.exe falseCoin.exe skew.exe replaceWords.exe replaceWords2.exe \
 	  binTree.exe eatCandy.exe jungleRoads.exe no7.exe rotateShift.exe \
 	  counterfeitDollar.exe extremum.exe mileageBank.exe captain.exe repeater.exe \
-	  oddPocket.exe oddPocket2.exe
+	  oddPocket.exe oddPocket2.exe score.exe buyHouse.exe maxSubMatrix.exe
 
 # tells make to use the file "../GNU_makefile_template", which
 # defines general rules for making .o and .exe files

@@ -3,7 +3,7 @@ CCFLAGS = -W -Wall -I.. #-lm
 OBJECTS = sort.exe sort2.exe sort3.exe factoring.exe proxy.exe reverse.exe \
 	  keyBoard.exe primeFactor.exe divideInteger.exe sphere.exe buildTree.exe \
 	  buildTree2.exe 2012.exe minStamp.exe sum532.exe rootNk.exe rootNkNew.exe \
-	  mutiply.exe date.exe perfectAndExcessNum.exe permut.exe maxSum.exe \
+	  mutiply.exe date.exe perfectAndExcessNum.exe permut.exe maxSubSum.exe \
 	  minCost.exe factorial.exe moveTree.exe students.exe bigDataRadixConvert.exe
 
 # tells make to use the file "../GNU_makefile_template", which
