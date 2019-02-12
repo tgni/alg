@@ -49,7 +49,8 @@ void search(int c[], int n, int k)
 
 int main()
 {
-	int c[8];
+	int c[8]; /* queen i stays at position column c[i] and rank i. 
+		     every queen must be in different rank, column and diagonal. */
 
 	search(c, 8, 0);
 	printf("total: %d\n", CNT);
