@@ -11,7 +11,8 @@ OBJECTS = iWannaGoHomeFloyd.exe iWannaGoHomeDijkstra.exe potentialFriends.exe ws
 	  carry.exe aveAge.exe digitRoots.exe chorus.exe sortString.exe getHerb.exe \
 	  sortString2.exe holdMissile.exe maxSumIncSeq.exe floatAdd.exe hex2dec.exe \
 	  bigIntegerPlus.exe sortString3.exe numberSteps.exe sumNumbers.exe compBiTNodes.exe \
-	  eightQueen.exe
+	  eightQueen.exe chickAndBunny.exe calculator.exe dropAnts.exe dropAnts2.exe \
+	  decryption.exe
 
 # tells make to use the file "../GNU_makefile_template", which
 # defines general rules for making .o and .exe files

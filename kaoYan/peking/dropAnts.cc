@@ -1,3 +1,6 @@
+/* simulate dropAnts
+ */
+
 #include <iostream>
 #include <vector>
 #include <algorithm>
@@ -25,6 +28,7 @@ void dump()
 
 void move()
 {
+	/* move */
 	for (auto &a : vec) {
 		if (a.dir == -1)
 			a.pos -= 1;
@@ -32,38 +36,34 @@ void move()
 			a.pos += 1;
 	}
 
+	/* 3 ants meet */
+	for (int i = 0; i < (int)(vec.size()-2); i += 3) {
+		if (vec[i].pos == vec[i+1].pos && vec[i+1].pos == vec[i+2].pos)
+			swap(vec[i].dir, vec[i+2].dir);
+	}
+
+	/* 2 ants meet */
+	for (int i = 0; i < (int)(vec.size()-1); i++) {
+		if (vec[i].pos > vec[i+1].pos) {
+			swap(vec[i].flag, vec[i+1].flag);
+			swap(vec[i], vec[i+1]);
+		}
+	}
+
+	/* drop */
 	for (auto it = vec.begin(); it != vec.end(); ) {
-		if (it->pos == 0 || it->pos == 100)
+		if (it->pos <= 0 || it->pos >= 100)
 			it = vec.erase(it);
 		else
 			++it;
 	}
-
-	int i;
-	for (i = 0; i < vec.size()-2; ) {
-		if (vec[i].pos+1 == vec[i+1].pos && vec[i+1].pos+1 == vec[i+2].pos) {
-			swap(vec[i].dir, vec[i+2].dir);
-			i += 3;
-		} else if (vec[i].pos+1 == vec[i+1].pos) {
-			swap(vec[i].dir, vec[i+1].dir);
-			i += 2;
-		} else {
-			i += 1;
-		}
-	}
-	if (i == vec.size()-2) {
-		if (vec[i].pos+1 == vec[i+1].pos)
-			swap(vec[i].dir, vec[i+1].dir);
-	}
 }
 
-bool end()
+bool isDrop()
 {
-	for (auto c : vec) {
+	for (auto c : vec)
 		if (c.flag)
 			return false;
-	}
-
 	return true;
 }
 
@@ -86,19 +86,18 @@ int main()
 		sort(vec.begin(), vec.end());
 
 		int cnt = 0;
-		bool isDrop = true;
-		while (++cnt < 100 && !end()) {
-			dump();
-			if (vec.size() == 1 && vec[0].dir == 0) {
-				isDrop = false;
+		while (!isDrop()) {
+			if (vec.size() == 1 && vec[0].dir == 0)
 				break;
-			}
+			//dump();
 			move();
+			++cnt;
 		}
-		if (isDrop)
+
+		if (isDrop())
 			cout << cnt << endl;
 		else
-			cout << "Cannot fail!" << endl;
+			cout << "Cannot fall!" << endl;
 	}
 
 	return 0;
