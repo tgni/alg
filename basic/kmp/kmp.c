@@ -70,7 +70,7 @@ int kmp(char *s, int len, char *p, int plen, int next[])
 int main()
 {
 	//char *pattern = "abababca";
-	char *pattern = "abaabcac";
+	char *pattern = "abab";
 	char *s = "ababababca";
 	int pos, *next;
 
