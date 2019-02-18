@@ -1,6 +1,6 @@
 #g++ compiler: options
 
-CC = gcc
+CC = g++
 CCFLAGS = 
 
 # Some programs include headers defined in earlier chapters
