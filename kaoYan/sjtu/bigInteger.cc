@@ -97,9 +97,9 @@ struct bigInteger {
 	bigInteger operator * (const bigInteger &A) const {
 		bigInteger ret;
 
-		for (int i = 0; i < maxDigits; ++i) {
+		for (int i = 0; i < size+1; ++i) {
 			int carry = 0;
-			for (int j = 0; j < maxDigits; ++j) {
+			for (int j = 0; j < A.size+1; ++j) {
 				ret.digit[i+j] = digit[i]*A.digit[j] + ret.digit[i+j] + carry;
 				carry = ret.digit[i+j] / 10;
 				ret.digit[i+j] = ret.digit[i+j] % 10;

@@ -1,7 +1,7 @@
 #g++ compiler: options
 
 CC = g++
-CCFLAGS = 
+#CCFLAGS = 
 
 # Some programs include headers defined in earlier chapters
 # LOCFLAGS used to set tell the compiler where to find a
