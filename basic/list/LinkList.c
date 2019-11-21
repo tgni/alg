@@ -145,6 +145,55 @@ void DeleteDup(LinkList L)
 	return;
 }
 
+/* Suppose L is not sorted */
+void DeleteDup2(LinkList L)
+{
+	LNode *r, *p, *q;
+
+	q = L->next;
+	
+	while (q != NULL) {
+		p = q;
+		while (p->next != NULL) {
+			if (p->next->data == q->data) {
+				r = p->next;
+				p->next = r->next;
+				free(r);
+			} else {
+				p = p->next;
+			}
+		}
+		q = q->next;
+	}
+
+	return;
+}
+
+void DeleteDup22(LinkList L)
+{
+	LNode *pre, *p, *q;
+
+	q = L->next;
+	
+	while (q != NULL) {
+		pre = q;
+		p = pre->next;
+		while (p != NULL) {
+			if (p->data == q->data) {
+				pre->next = p->next;
+				free(p);
+				p = pre->next;
+			} else {
+				pre = p;
+				p = pre->next;
+			}
+		}
+		q = q->next;
+	}
+
+	return;
+}
+
 void Reverse(LinkList L)
 {
 	LNode *p, *r;
@@ -246,6 +295,7 @@ void PrintReverse(LinkList L)
 
 void PrintList(LinkList L)
 {
+	L = L->next;
 	while (L) {
 		printf("%d ", L->data);
 		L = L->next;
@@ -704,11 +754,15 @@ int main(void)
 	}
 	DListPrint(L);
 	*/
+
+	srand(time(NULL));
 	LinkList L;	
 	L = Create2(10);
 	PrintList(L);
-	if (!SearchLastK(L, 3))
-		printf("Not found pos 3\n");
+	//if (!SearchLastK(L, 3))
+	//	printf("Not found pos 3\n");
+	DeleteDup22(L);
+	PrintList(L);
 
 	return 0;
 }
