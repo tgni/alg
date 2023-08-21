@@ -31,6 +31,21 @@ int main(int argc, char *argv[])
 	print_binary(x & (x+1));
 	printf("x | (x-1):");
 	print_binary(x | (x-1));
+	printf("~x & (x+1):");
+	print_binary(~x & (x+1));
+	printf("~x | (x-1):");
+	print_binary(~x | (x-1));
+
+	printf("trailing 0 to 1\n");
+	printf("~x & (x-1):");
+	print_binary(~x & (x-1));
+	printf("~(x | -x):");
+	print_binary(~(x | -x));
+	printf("(x & -x)-1:");
+	print_binary((x & -x)-1);
+	printf("trailing 1 to 0\n");
+	printf("~x | (x+1):");
+	print_binary(~x | (x+1));
 
 	return 0;
 }
