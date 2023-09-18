@@ -13,17 +13,27 @@
 #include "types.h"
 #include "list.h"
 
+//#define DIST_MAX	(100)
+#define DIST_MAX	(110)
 
 struct rb_node{
+	list_head_t list;
+
 	struct rb_node *rb_parent;
+
+	int32_t  dist;
+	int32_t  depth;
+
 	int32_t rb_color;
 #define RB_RED          1
 #define RB_BLACK        2
 	struct rb_node *rb_right;
 	struct rb_node *rb_left;
 };
-#define rb_entry(ptr, type, member) \
+//#define rb_entry(ptr, type, member) \
         ((type *)(uint32_t)((char *)(ptr)-(unsigned long)(&((type *)0)->member)))
+#define rb_entry(ptr, type, member) \
+        ((type *)(unsigned long)((char *)(ptr)-(unsigned long)(&((type *)0)->member)))
 
 #define rb_node_init(node) do{ \
 	(node).rb_parent = (node).rb_right = (node).rb_left = NULL; \
@@ -39,6 +49,14 @@ struct rb_root{
 
 
 struct rb_tree_s;
+
+//#define NR_TEI_MAX 256
+#define NR_TEI_MAX 32
+typedef struct sta_s {
+	uint16_t tei;
+	struct rb_node rb;
+} sta_t;
+
 
 /**
  * rb_treenode_cmp_fp - Function pointer of the function that compare the two node.

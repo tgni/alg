@@ -27,8 +27,8 @@ int main(int argc, char *argv[])
 	}
 
 	for (i = 0; i < nr; ++i)
-		A[i] = i;
-	shuffle(A, nr);
+		A[i] = i+1;
+	//shuffle(A, nr);
 
 	T = MakeEmpty( NULL );
 	for ( i = 0; i < nr; ++i)
@@ -36,9 +36,9 @@ int main(int argc, char *argv[])
 
 	ComputeDistAndDepth(T);
 	HPrintAvlTree(T);
-	InOrder(T);
-	PreOrder(T);
-	PostOrder(T);
+	//InOrder(T);
+	//PreOrder(T);
+	//PostOrder(T);
 	printf("Height: %d\n", GetHeight(T));
 
 	return 0;

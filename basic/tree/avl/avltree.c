@@ -6,7 +6,8 @@
 #include "que.h"
 #include "stack.h"
 
-#define DIST_MAX	(64)
+//#define DIST_MAX	(64)
+#define DIST_MAX	(100)
 
 typedef struct AvlNode {
 	list_head_t	List;

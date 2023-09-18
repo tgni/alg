@@ -424,6 +424,9 @@ void rb_rotate_left(struct rb_node *node, struct rb_root *root)
 {
 	struct rb_node *right = node->rb_right;
 
+	sta_t *sta = rb_entry(node, sta_t, rb);
+	printf("node %d rotate left\n", sta->tei);
+
 	if ( (node->rb_right = right->rb_left) )
 		right->rb_left->rb_parent = node;
 	right->rb_left = node;
@@ -438,12 +441,16 @@ void rb_rotate_left(struct rb_node *node, struct rb_root *root)
 		root->rb_node = right;
 
 	node->rb_parent = right;
+
 }
 
 
 void rb_rotate_right(struct rb_node *node, struct rb_root *root)
 {
 	struct rb_node *left = node->rb_left;
+
+	sta_t *sta = rb_entry(node, sta_t, rb);
+	printf("node %d rotate right\n", sta->tei);
 	
 	if ( (node->rb_left = left->rb_right) )
 		left->rb_right->rb_parent = node;

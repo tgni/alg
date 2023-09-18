@@ -8,8 +8,8 @@ LOCFLAGS =
 
 # For each target may need more than one source file, define TARGET 
 # instead and add linking objects at OBJS
-TARGET = rightmost_bits.exe 
-OBJS += rightmost_bits.o
+#TARGET = 
+TARGETEXE = rightmost_bits.exe snoob.exe abs.exe
 
 # general makefile template
 include ../GNU_makefile_template
