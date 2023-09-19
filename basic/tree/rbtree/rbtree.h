@@ -50,8 +50,6 @@ struct rb_root{
 
 struct rb_tree_s;
 
-//#define NR_TEI_MAX 256
-#define NR_TEI_MAX 32
 typedef struct sta_s {
 	uint16_t tei;
 	struct rb_node rb;

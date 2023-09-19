@@ -5,7 +5,6 @@
 #include "que.h"
 
 rb_tree_t tr;
-sta_t sta_entry[NR_TEI_MAX];
 
 int32_t tei_cmp(struct rb_node *n, void *key)
 {
@@ -151,8 +150,9 @@ int main(int argc, char *argv[])
 {
 	struct rb_node **p, *pa;
 	struct rb_node *iter = NULL;
-	sta_t *sta;
 	int32_t i;
+#if 0
+	sta_t *sta;
 	uint32_t nr;
 
 	if (argc < 2) {
@@ -187,9 +187,48 @@ int main(int argc, char *argv[])
 
 		tr.insert(&tr, &sta[i].rb, pa, p);	
 	}
+#else
+	uint16_t tei_list[] = {41, 38, 31, 12, 19, 8};
+	sta_t sta[6];
 
-	compute_dist_and_depth(&tr);
-	print_rb_tree(&tr);
+	rb_tree_init(&tr,
+		tei_cmp,
+		rb_tree_find_default,
+		rb_tree_insert_default,
+		rb_tree_erase_default,
+		(rb_treenode_del_fp)0,
+		rb_tree_finalize_default);
 
+	for (i = 0; i < 6; ++i) {
+		sta[i].tei = tei_list[i];
+		if (*(p = tr.find(&tr, &sta[i].tei, &pa))) {
+			printf("Duplicate tei: %d\n", sta[i].tei);	
+			continue;
+		}
+		printf("insert node %d\n", sta[i].tei);
+		tr.insert(&tr, &sta[i].rb, pa, p);	
+
+		compute_dist_and_depth(&tr);
+		print_rb_tree(&tr);
+	}
+
+	//printf("origin tree : \n");
+	//compute_dist_and_depth(&tr);
+	//print_rb_tree(&tr);
+
+	uint16_t del_list[] = {8, 12, 19, 31, 38, 41};
+
+	for (i = 0; i < 6; ++i) {
+		if (*(p = tr.find(&tr, &del_list[i], &pa))) {
+			printf("erase node %d\n", del_list[i]);
+			tr.erase(&tr, pa);
+		}
+		if (i < 5) {
+			compute_dist_and_depth(&tr);
+			print_rb_tree(&tr);
+		}
+	}
+
+#endif
 	return 0;
 }
