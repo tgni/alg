@@ -17,5 +17,5 @@ $(TOOLLIB):
 	cd ../lib; make
 
 clean:
-	rm *.o -f
+	rm *.o test -f
 	cd ../lib; make clean
