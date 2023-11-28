@@ -17,6 +17,15 @@ int main(){
 		printf("after extract %d\n", d.key);
 		heap_display(&myheap);
 	}
+#if 0
+	for (int i = 1; i<maxKey; i+=3) {
+		nd = heap_insert(&myheap, i, NULL);
+	}
+
+	printf("delete %d\n", nd->key);
+	heap_delete(&myheap, nd);
+	heap_display(&myheap);
+#endif
 
 	return 0;
 }

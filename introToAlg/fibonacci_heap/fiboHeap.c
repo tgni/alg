@@ -3,50 +3,57 @@
 
 #include <stdio.h>
 #include <limits.h>
-#include <assert.h>
 #include "heap.h"
 #include "node.h"
 
-heap* heap_init(){
+heap* heap_init()
+{
 	return NULL;
 }
 
 elem* heap_add(heap** H, node* newNode);
 
-elem* heap_insert(heap** H, int key, void* value){
+elem* heap_insert(heap** H, int key, void* value)
+{
 	node* newNode = node_init(key, value);
+
 	return heap_add(H, newNode);
 }
 
-int is_empty(heap* H){
+int is_empty(heap* H)
+{
 	return H == NULL;
 }
 
-elem* heap_add(heap** H, node* newNode){
-	assert(H);
-	assert(newNode);
+elem* heap_add(heap** H, node* newNode)
+{
 	node* oldNode = *H;
+
 	newNode->parent = NULL;
 	newNode->hasLostKid = 0;
-	if (oldNode){ //nonempty heap
+
+	if (oldNode) { //nonempty heap
 		node_add(oldNode, newNode);
 		if (oldNode->key > newNode->key){ //new smallest
 			*H = newNode;
 		}
-	}else{ //previously empty heap
+	} else { //previously empty heap
 		newNode->left = newNode;
 		newNode->right = newNode;
 		*H = newNode;
 	}
+
 	return newNode;
 }
 
-data  heap_min(heap* H){
-	assert(H);
+data heap_min(heap* H)
+{
 	data d;
 	node* head = H;
+
 	d.key = head->key;
 	d.value = head->value;
+
 	return d;
 }
 
@@ -55,16 +62,19 @@ void  heap_match_degrees(heap** H, node** A, node* x);
 node* heap_link(heap** H, node* x, node* y);
 void  heap_remove_from(heap** H, node* x);
 
-data  heap_extract_min(heap** H){
-	assert(H && *H);
+data  heap_extract_min(heap** H)
+{
 	node* z = *H;
 	data d = elem_data(z);
 	node* first = z->kid;
+
 	heap_remove_from(H, z);
 	node_free(z);
-	if (first){
+
+	if (first) {
+		//keep kids list, union with root list.
 		node* current = first->right;
-		while (current != first){
+		while (current != first) {
 			current->parent = NULL;
 			current = current->right;
 		}
@@ -75,11 +85,11 @@ data  heap_extract_min(heap** H){
 	return d;
 }
 
-void  heap_remove_from(heap** H, node* x){
-	assert(!x->parent);
-	if (x->right == x){
+void  heap_remove_from(heap** H, node* x)
+{
+	if (x->right == x) {
 		*H = NULL;
-	}else{
+	} else {
 		x->left->right = x->right;
 		x->right->left = x->left;
 		*H = x->right;
@@ -88,40 +98,48 @@ void  heap_remove_from(heap** H, node* x){
 	x->right = x;
 	x->parent = NULL;
 }
-void  heap_consolidate(heap** H){
+void  heap_consolidate(heap** H)
+{
 	node* x = *H;
+	node ** A; 
+
 	if (!x) return;
-	node** A = calloc(100, sizeof(node));
+
+	A = calloc(100, sizeof(node));
+
 	memset(A, '\0', 100);
-	assert(x->degree >= 0);
+
 	node* last = x->left;
-	while(x != last){
+	while (x != last) {
 		node* next = x->right;
 		heap_match_degrees(H, A, x);
 		x = next;
 	}
 	heap_match_degrees(H, A, last);
+
 	*H = heap_init();
-	for (int i=0; i<100; i++){
-		if (A[i]){
+	for (int i=0; i<100; i++) {
+		if (A[i]) {
 			heap_add(H, A[i]);
 		}
 	}
 	free(A);
 }
 
-void heap_match_degrees(heap** H, node** A, node* x){
+void heap_match_degrees(heap** H, node** A, node* x)
+{
 	int d = x->degree;
-	while(A[d]){
+
+	while (A[d]) {
 		if (d > 99){
 			exit(1);
 		}
 		node* y = A[d];
-		if (y != x){
+		if (y != x) {
 			x = heap_link(H, x, y);
 			A[d] = NULL;
 			d++;
-		}else{
+		} else {
 			break;
 		}
 	}
@@ -129,14 +147,13 @@ void heap_match_degrees(heap** H, node** A, node* x){
 }
 
 node* heap_link(heap** H, node* x, node* y){
-	assert(x);
-	assert(y);
-	assert(x->degree == y->degree);
 	if (x->key > y->key){
 		return heap_link(H, y, x);
 	}
+
 	heap_remove_from(H, y);
-	if (x->kid){
+
+	if (x->kid) {
 		node* z = x->kid;
 		y->right = z;
 		y->left = z->left;
@@ -147,12 +164,14 @@ node* heap_link(heap** H, node* x, node* y){
 	x->kid = y;
 	x->degree++;
 	y->hasLostKid = 0;
+
 	return x;
 }
 
 heap* heap_union(heap* H1, heap* H2){
 	if(!H1) return H2;
 	if(!H2) return H1;
+
 	if (heap_min(H2).key < heap_min(H1).key){
 		return heap_union(H2, H1);
 	}
@@ -170,42 +189,64 @@ heap* heap_union(heap* H1, heap* H2){
 	return H1first;
 }
 
-void  heap_decrease_key(heap** H, elem* x, int newKey){
-	assert(H && *H);
-	assert(x && x->key >= newKey);
-	x->key = newKey;
-	if(x->parent && x->parent->key > newKey){
-		if (x->left == x){
-			assert(x->parent->degree == 2);
-			x->parent->kid = NULL;
-		}else{
-			assert(x->parent->degree > 2);
-			x->left->right = x->right;
-			x->right->left = x->left;
-			x->parent->kid = x->left;
-		}
-		x->parent->degree--;
-		heap_add(H, x);
-		if (! x->parent->hasLostKid){
-			x->parent->hasLostKid = 1;
-		}else{
-			heap_decrease_key(H, x->parent, x->parent->key);
-		}
+void cut(heap ** H, node *x, node *y)
+{
+	if (x->left == x) {
+		assert(x->parent->degree == 1);
+		y->kid = NULL;
+	} else {
+		assert(x->parent->degree > 1);
+		x->left->right = x->right;
+		x->right->left = x->left;
+		y->kid = x->left;
+	}
+	y->degree--;
 
-	}else{
-		if (newKey < (*H)->key){
-			assert(!x->parent);
-			*H = x;
+	heap_add(H, x);
+}
+
+void cascading_cut(heap ** H, node *y)
+{
+	node *z = y->parent;
+	if (z) {
+		if (!y->hasLostKid) {
+			y->hasLostKid = 1;
+		} else {
+			cut(H, y, z);
+			cascading_cut(H, z);
 		}
 	}
 }
 
-void  heap_delete(heap** H, elem* x){
+void heap_decrease_key(heap** H, elem* x, int newKey)
+{
+	node *y;
+
+	assert(H && *H);
+	assert(x && x->key >= newKey);
+
+	x->key = newKey;
+	y = x->parent;
+
+	if(y && x->key < y->key) {
+		cut(H, x, y);
+		cascading_cut(H, y);
+	}
+
+	if (newKey < (*H)->key) {
+		assert(!x->parent);
+		*H = x;
+	}
+}
+
+void  heap_delete(heap** H, elem* x)
+{
 	heap_decrease_key(H, x, INT_MIN);
 	heap_extract_min(H);
 }
 
-data  elem_data(elem* x) {
+data  elem_data(elem* x) 
+{
 	assert(x);
 	data d;
 	d.key = x->key;
@@ -213,16 +254,18 @@ data  elem_data(elem* x) {
 	return d;
 }
 
-void heap_free(heap** H) {
+void heap_free(heap** H) 
+{
 	node* header = *H;
 	node* first = header;
+
 	if (header) {
-		while(header != first) {
-			node* next = header->right;
+		do {
 			node_kill(header);
-			header = next;
-		}
+			header = header->right;
+		} while (header != first);
 	}
+
 	*H = NULL;
 }
 
@@ -243,6 +286,8 @@ void compute_level(heap ** H)
 			compute_level(&next->kid);
 		next= next->right;
 	} while (next != first);
+
+	return;
 }
 
 static int __last[99];
